@@ -42,6 +42,8 @@ const translations = {
     oldYin: "Old Yin",
     debugLineValues: "Debug - Line Values:",
     debugCoinToss: "Debug - Coin Toss:",
+    changing: "Changing",
+    stable: "Stable",
   },
   zh: {
     title: "易经",
@@ -61,6 +63,8 @@ const translations = {
     oldYin: "老阴",
     debugLineValues: "调试 - 爻值:",
     debugCoinToss: "调试 - 掷币:",
+    changing: "变",
+    stable: "静",
   },
 };
 
@@ -199,7 +203,15 @@ const IChingApp: React.FC = () => {
                     <div key={index} className="flex items-center gap-3 p-3 bg-[#1e1e1e] rounded-lg">
                       <span className="text-sm text-[#3a5f6e]">{t.line} {index + 1}:</span>
                       <span className="font-serif">{line.display}</span>
-                      <span className="ml-auto text-2xl">
+                      {/* Changing/Stable Indicator */}
+                      <span className={`ml-auto px-2 py-1 rounded text-xs font-medium ${
+                        line.isChanging 
+                          ? "bg-[#3a5f6e] text-white" 
+                          : "bg-[#2a2a2a] text-[#888]"
+                      }`}>
+                        {line.isChanging ? t.changing : t.stable}
+                      </span>
+                      <span className="text-2xl">
                         {line.value === 7 || line.value === 9 ? "━━━" : "━ ━"}
                       </span>
                     </div>
