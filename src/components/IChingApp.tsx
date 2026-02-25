@@ -40,6 +40,7 @@ const translations = {
     youngYin: "Young Yin",
     oldYang: "Old Yang",
     oldYin: "Old Yin",
+    debugLineValues: "Debug - Line Values:",
   },
   zh: {
     title: "易经",
@@ -57,6 +58,7 @@ const translations = {
     youngYin: "少阴",
     oldYang: "老阳",
     oldYin: "老阴",
+    debugLineValues: "调试 - 爻值:",
   },
 };
 
@@ -114,10 +116,17 @@ const IChingApp: React.FC = () => {
 
         const primaryHexagram = data.hexagrams.find(h => h.binary === primaryBinary)?.number || 1;
         const transformedHexagram = data.hexagrams.find(h => h.binary === transformedBinary)?.number || null;
-        // Only include lines that are actually changing (value 6 or 9)
+        
+        // FIX: Only include lines that are actually changing (value 6 or 9)
         const changingLines = newLines
-          .map((line, index) => line.isChanging ? index + 1 : -1)
-          .filter(n => n !== -1);
+          .map((line, index) => {
+            // Only return line number if it's a changing line (6 or 9)
+            if (line.value === 6 || line.value === 9) {
+              return index + 1;
+            }
+            return -1;
+          })
+          .filter(lineNum => lineNum !== -1);
 
         setResult({
           primaryHexagram,
@@ -197,6 +206,17 @@ const IChingApp: React.FC = () => {
                   <p className="font-serif">{question}</p>
                 </div>
               )}
+
+              {/* DEBUG DISPLAY - Shows raw line values */}
+              <div className="p-4 bg-[#1e1e1e] rounded-lg border border-[#3a5f6e]">
+                <h3 className="text-sm text-[#3a5f6e] mb-2">{t.debugLineValues}</h3>
+                <p className="font-mono text-lg">
+                  [{result.lines.map(l => l.value).join(", ")}]
+                </p>
+                <p className="text-sm text-[#888] mt-1">
+                  6 = Old Yin (changing), 7 = Young Yang (stable), 8 = Young Yin (stable), 9 = Old Yang (changing)
+                </p>
+              </div>
 
               {primaryHexagramData && (
                 <HexagramDisplay
