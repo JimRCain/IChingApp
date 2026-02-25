@@ -2,10 +2,9 @@
 
 import React, { useState, useCallback } from "react";
 import { LanguageToggle } from "./LanguageToggle";
-import { CoinToss } from "./CoinToss";
 import { HexagramDisplay } from "./HexagramDisplay";
 import ichingData from "@/data/iching-data.json";
-import type { IChingData, Hexagram } from "@/types/iching";
+import type { IChingData } from "@/types/iching";
 
 const data = ichingData as IChingData;
 
@@ -115,7 +114,10 @@ const IChingApp: React.FC = () => {
 
         const primaryHexagram = data.hexagrams.find(h => h.binary === primaryBinary)?.number || 1;
         const transformedHexagram = data.hexagrams.find(h => h.binary === transformedBinary)?.number || null;
-        const changingLines = newLines.map((line, index) => line.isChanging ? index + 1 : -1).filter(n => n !== -1);
+        // Only include lines that are actually changing (value 6 or 9)
+        const changingLines = newLines
+          .map((line, index) => line.isChanging ? index + 1 : -1)
+          .filter(n => n !== -1);
 
         setResult({
           primaryHexagram,

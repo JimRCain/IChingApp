@@ -3,6 +3,7 @@ export interface Hexagram {
   nameEn: string;
   nameCn: string;
   judgment: string;
+  image: string;
   lines: string[];
   binary: string;
 }
