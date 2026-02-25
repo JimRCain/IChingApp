@@ -41,6 +41,7 @@ const translations = {
     oldYang: "Old Yang",
     oldYin: "Old Yin",
     debugLineValues: "Debug - Line Values:",
+    debugCoinToss: "Debug - Coin Toss:",
   },
   zh: {
     title: "易经",
@@ -59,6 +60,7 @@ const translations = {
     oldYang: "老阳",
     oldYin: "老阴",
     debugLineValues: "调试 - 爻值:",
+    debugCoinToss: "调试 - 掷币:",
   },
 };
 
@@ -68,17 +70,26 @@ const IChingApp: React.FC = () => {
   const [lines, setLines] = useState<LineResult[]>([]);
   const [isComplete, setIsComplete] = useState(false);
   const [result, setResult] = useState<ReadingResult | null>(null);
+  const [lastCoinToss, setLastCoinToss] = useState<number[]>([]);
 
   const t = translations[language];
 
   const generateLine = useCallback((): LineResult => {
-    const coins = [Math.floor(Math.random() * 2) + 1, Math.floor(Math.random() * 2) + 1, Math.floor(Math.random() * 2) + 1];
+    // FIX: Each coin should be 2 or 3 (not 1 or 2)
+    // heads = 3, tails = 2
+    const coins = [
+      Math.random() < 0.5 ? 2 : 3,
+      Math.random() < 0.5 ? 2 : 3,
+      Math.random() < 0.5 ? 2 : 3,
+    ];
+    setLastCoinToss(coins);
     const sum = coins.reduce((a, b) => a + b, 0);
     
     let value: number;
     let isChanging: boolean;
     let display: string;
 
+    // Sum ranges from 6 (2+2+2) to 9 (3+3+3)
     if (sum === 6) {
       value = 6;
       isChanging = true;
@@ -117,10 +128,9 @@ const IChingApp: React.FC = () => {
         const primaryHexagram = data.hexagrams.find(h => h.binary === primaryBinary)?.number || 1;
         const transformedHexagram = data.hexagrams.find(h => h.binary === transformedBinary)?.number || null;
         
-        // FIX: Only include lines that are actually changing (value 6 or 9)
+        // Only include lines that are actually changing (value 6 or 9)
         const changingLines = newLines
           .map((line, index) => {
-            // Only return line number if it's a changing line (6 or 9)
             if (line.value === 6 || line.value === 9) {
               return index + 1;
             }
@@ -144,6 +154,7 @@ const IChingApp: React.FC = () => {
     setIsComplete(false);
     setResult(null);
     setQuestion("");
+    setLastCoinToss([]);
   }, []);
 
   const primaryHexagramData = result ? data.hexagrams.find(h => h.number === result.primaryHexagram) : null;
