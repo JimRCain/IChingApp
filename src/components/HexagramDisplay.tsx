@@ -1,11 +1,20 @@
 "use client";
 
 import React from "react";
-import type { Hexagram } from "@/types/iching";
+
+interface HexagramData {
+  number: number;
+  nameEn: string;
+  nameCn: string;
+  judgment: string;
+  image: string;
+  lines: string[];
+  binary: string;
+}
 
 interface HexagramDisplayProps {
   title: string;
-  hexagram: Hexagram;
+  hexagram: HexagramData;
   language: "en" | "zh";
 }
 
@@ -14,7 +23,7 @@ export const HexagramDisplay: React.FC<HexagramDisplayProps> = ({ title, hexagra
     return binary.split("").map((bit) => (bit === "1" ? "━━━" : "━ ━"));
   };
 
-  const lines = hexagram.binary ? binaryToLines(hexagram.binary) : hexagram.lines.map(() => "━━━");
+  const lines = binaryToLines(hexagram.binary);
 
   return (
     <div className="p-6 bg-[#1e1e1e] rounded-lg">
@@ -29,7 +38,7 @@ export const HexagramDisplay: React.FC<HexagramDisplayProps> = ({ title, hexagra
         </div>
         <div className="flex-1">
           <h4 className="text-xl font-serif font-bold mb-2">
-            {hexagram.number}. {hexagram.name}
+            {hexagram.number}. {language === "en" ? hexagram.nameEn : hexagram.nameCn}
           </h4>
         </div>
       </div>
