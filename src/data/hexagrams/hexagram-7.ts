@@ -1,8 +1,11 @@
 export const hexagram7 = {
   number: 7,
-  name: "The Army",
-  nameCn: "師",
+  name: "The Army (師 - Shī)",
   heart: "Water flowing underground. Hidden, unseen, but moving with purpose. Above, the earth; below, the stream that nourishes it. This is the army—not the visible force, but the disciplined structure that supports from beneath. The army is not war; it is organization. It is the capacity to act together, to move as one, to bring order out of chaos. The true leader does not stand above, waving banners. They flow underground, unseen, making the earth fertile.",
+  ancient: {
+    chinese: "師。貞，丈人吉，无咎。",
+    rendering: "The Army. Perseverance. The old man brings good fortune. No blame."
+  },
   judgment: "There are times when collective action is necessary. Not for conquest, not for glory—but for protection, for order, for the survival of what matters. In such times, the leader must be like the old man: experienced, calm, without personal ambition. They do not seek the army; the army seeks them. They lead not because they want power, but because they know how to serve. Perseverance here means staying true to the purpose, not getting drunk on the power. If the leader remains a channel, not a source, there is good fortune and no blame.",
   image: "Water flows underground. The noble one nurtures the people with generosity and protects them from harm. Water underground is invisible, but without it, the earth would be barren. The noble one, like this hidden water, nurtures without showing. They are generous—not with display, but with steady, reliable support. They protect—not with force visible, but with structure that holds. The army at its best is not seen; it is felt in the order it maintains, the safety it provides, the fields it allows to be planted in peace.",
   lines: [
@@ -13,5 +16,16 @@ export const hexagram7 = {
     "There is game in the fields. It furthers one to capture them. No blame. The eldest son leads the army. The younger piles up corpses. Perseverance brings misfortune. When the purpose is clear—game in the fields, sustenance for the people—it is right to act. The eldest son, the capable one, leads. But if the younger, the unprepared, tries to take charge, they pile up corpses—waste, failure, unnecessary death. To persevere in this error brings misfortune. Know who should lead. Let them lead.",
     "The great ruler issues commands, founds states, invests families. Inferior people should not be employed. After the work is done, after the army has served its purpose, the great ruler returns to the ways of peace. They found states, not garrisons. They invest families, not soldiers. They issue commands for life, not death. And in all this, they remember: inferior people—those who love war, who seek power, who would make the army their career—should not be employed. The army exists to make itself unnecessary. The leader who forgets this becomes the very thing they were meant to oppose."
   ],
-  binary: "010000"
+  trigrams: {
+    lower: {
+      name: "Kǎn (Water)",
+      nature: "The abysmal, dangerous, hidden power"
+    },
+    upper: {
+      name: "Kūn (Earth)",
+      nature: "The receptive, yielding, supportive ground"
+    },
+    description: "Water underground. The hidden stream that nourishes the earth without showing itself. This is the true nature of organized force: not the visible army, but the discipline that flows beneath, making collective action possible. The water is dangerous—it can flood, it can drown—but underground, it is life. The army, when rightly led, is the same: hidden, disciplined, life-giving."
+  },
+  taoist_reflection: "The Tao Te Ching says: 'A good leader is one who, when the work is done, the people say, \"We did this ourselves.\"' Hexagram 7 is the manual for that kind of leadership. The army that flows underground, unseen, does not need to be seen to be effective. The leader who is in the midst, not above, does not need to be praised to be followed. When the battle is over, when the state is founded, when the families are invested, the people do not say, 'What a great general.' They say, 'We did this. We were safe. We were fed. We lived.' And the leader, like water underground, has already moved on to the next place that needs nourishing. This is the highest art of the army: to make itself unnecessary, to return to the earth, to let the fields speak for themselves."
 };

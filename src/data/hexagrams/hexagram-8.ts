@@ -1,8 +1,11 @@
 export const hexagram8 = {
   number: 8,
-  name: "Holding Together",
-  nameCn: "比",
+  name: "Holding Together (比 - Bǐ)",
   heart: "Water flowing to the earth. Not forced, not pushed—simply seeking its own level, finding the low places, joining with what is already there. This is holding together: the natural affinity that draws like to like, that creates community not by decree but by mutual recognition. The army organized; now it must unite. Not through command, but through the quiet gravity of shared purpose.",
+  ancient: {
+    chinese: "比。吉。原筮元永貞，无咎。不寧方來，後夫凶。",
+    rendering: "Holding Together brings good fortune. Consult the oracle further for the sublime, enduring perseverance, and no blame. Those who are uncertain gradually join. Those who come too late meet misfortune."
+  },
   judgment: "Good fortune. Not because holding together is easy, but because it is natural. Water seeks earth; earth receives water. This is the way of things. To hold together with others who share your center is not a compromise—it is a completion. Consult deeply before committing. Do not rush into alliance. Let the sublime, enduring perseverance guide you: is this true? Will it last? Can you give yourself to it without losing yourself? Those who are uncertain will come in their own time, drawn by the same gravity that brought you. But those who come too late, who wait until the bond is already formed and try to force their way in, meet misfortune. The circle closes. Timing is part of truth.",
   image: "On the earth, water. The noble ones of old gave to the various kingdoms, befriended the feudal lords. Water on earth: it seeks the low places, fills the hollows, connects what is separate. The ancient rulers understood this image. They did not conquer; they gave. They did not control; they befriended. They honored the existing bonds of the kingdoms, the natural alliances of the lords. Holding together is not about creating bonds where none exist—it is about recognizing and honoring the bonds that are already there, and adding to them generously.",
   lines: [
@@ -13,5 +16,16 @@ export const hexagram8 = {
     "Manifestation of holding. The king takes the hunt in the encircling park. Those who come from within are not caught. Those who come from without are caught. The hunt: the king circles the game, driving it toward the center. But those who are already within the circle, who belong there by nature, are not caught—they are recognized. Those who come from without, who do not belong, are caught. This is the discernment of true holding. Not exclusion, but clarity. The circle knows who is inside and who is not. The king does not decide; the circle reveals.",
     "He finds no head for holding. Misfortune. To hold together without a head—without a center, without a leader, without a shared focal point—is to be a body without a spine. The bond dissolves into confusion. Each pulls in their own direction. What was meant to unite becomes a source of fragmentation. This is misfortune not because heads are necessary for their own sake, but because without one, the holding has nothing to hold to."
   ],
-  binary: "010000"
+  trigrams: {
+    lower: {
+      name: "Kūn (Earth)",
+      nature: "The receptive, yielding, the ground that receives"
+    },
+    upper: {
+      name: "Kǎn (Water)",
+      nature: "The abysmal, dangerous, flowing water"
+    },
+    description: "Water on earth. The water flows to the earth, finding the low places, filling the hollows, creating lakes and rivers and wetlands. This is not conquest—it is affinity. The earth does not resist the water; it receives it. The water does not force the earth; it seeks it. Their holding together is the most natural thing in the world. And from their union, life springs forth in abundance."
+  },
+  taoist_reflection: "The Tao Te Ching says: 'The highest goodness is like water. Water benefits all things and does not contend. It stays in lowly places that others despise. Thus it is near the Tao.' Hexagram 8 is water finding its level—not by contending, but by flowing. The bonds that hold are not forced; they are discovered. You do not create community; you recognize it. You do not manufacture loyalty; you embody it. Like water finding earth, you simply go where your nature leads, and there you find your people. Those who come late, who try to join after the bond is formed, meet misfortune—not because they are excluded, but because they mistook timing. The water was already there, already flowing. The wise one arrives when the water is still gathering, not after it has found the sea."
 };

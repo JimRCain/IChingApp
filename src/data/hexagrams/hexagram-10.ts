@@ -1,8 +1,11 @@
 export const hexagram10 = {
   number: 10,
-  name: "Treading",
-  nameCn: "履",
+  name: "Treading (履 - Lǚ)",
   heart: "Stepping on the tail of a tiger. The danger is real—the tiger could turn, could bite, could end you. But it does not. Not because you are lucky, but because you tread correctly. Your step is light, your intention pure, your awareness complete. The tiger feels no threat, so it does not react. This is treading: walking through a dangerous world with such presence, such alignment, that even the tiger lets you pass. The path is narrow, but it is there. And you are walking it.",
+  ancient: {
+    chinese: "履虎尾，不咥人，亨。",
+    rendering: "Treading on the tail of the tiger. It does not bite the person. Success."
+  },
   judgment: "The world is full of tigers—dangers, conflicts, powers greater than you. To walk through it without being bitten is not a matter of luck; it is a matter of tread. How do you step? Are you heavy, arrogant, unaware? Then the tiger will turn. Are you light, humble, present? Then it will let you pass. Success comes not from conquering the tiger, but from walking in such a way that the tiger does not feel threatened. This is the art of treading: to move through danger without provoking it, to be in the world without disturbing it, to follow the path so precisely that even the tiger respects your passage.",
   image: "Heaven above, the lake below. The noble one distinguishes between high and low, and thus settles the will of the people. Heaven above, the lake below—the highest and the lowest, the most exalted and the most humble. Between them, all the levels of existence. The noble one looks at this image and understands: to tread correctly, you must see clearly. Distinguish what is high from what is low, what is worthy from what is base, what is lasting from what is fleeting. Not to judge, but to orient. When you see clearly, your will settles. When your will settles, your tread becomes steady. And the people, watching you, find their own will settled. This is leadership through right treading.",
   lines: [
@@ -13,5 +16,16 @@ export const hexagram10 = {
     "Treading decisively. Perseverance brings danger. You have reached a point where decision is required. Not hesitation, not caution—decisive tread. But the line warns: perseverance in this decisiveness brings danger. Because decisiveness, if prolonged, becomes rigidity. The tiger feels your hardness and stirs. The wise one knows when to be decisive and when to yield. If you must tread decisively, do it, then soften. Do not make a habit of it. The tiger respects flexibility more than force.",
     "Look to your conduct and weigh the signs. When the cycle is complete, there is supreme good fortune. The end of the journey. You have trodden the whole path, through simplicity, through darkness, through danger, through decision. Now look back. Weigh your conduct. Read the signs your own passage has left. The cycle is complete—not because you reached a destination, but because you have walked the whole way with awareness. This looking back, this weighing, this completion—this is supreme good fortune. Not the fortune of arrival, but the fortune of having trodden well."
   ],
-  binary: "111011"
+  trigrams: {
+    lower: {
+      name: "Duì (Lake)",
+      nature: "The joyful, the reflective, the still water that mirrors"
+    },
+    upper: {
+      name: "Qián (Heaven)",
+      nature: "The creative, the strong, the power above"
+    },
+    description: "Lake below, heaven above. The lake reflects heaven—still, clear, mirroring the vastness above. This is treading: the humble reflecting the exalted, the low mirroring the high. The lake does not try to become heaven; it simply reflects it. In its reflection, it contains the whole sky. In your treading, you do not need to become the tiger or the mountain or the king. You need only reflect what is above with such clarity that your step becomes true. The lake is safe because it does not threaten; it reflects. You are safe when you tread with the same humble clarity."
+  },
+  taoist_reflection: "The Tao Te Ching says: 'Those who know do not speak. Those who speak do not know. Block the passages, shut the doors, blunt the sharpness, untangle the knots, soften the glare, become one with the dust.' Hexagram 10 is the teaching of becoming dust. The tiger does not bite the dust; it walks over it, through it, past it. When you are truly humble, truly present, truly without threat, you become like dust—so ordinary, so unremarkable, so completely what you are that no tiger notices you. Yet the dust is everywhere. It is on the path, on the tiger's tail, on the mountain and the valley. To tread correctly is to be everywhere and nowhere, to be so completely yourself that you pose no threat to anything, and therefore nothing threatens you. The tiger sleeps. The path opens. You walk."
 };

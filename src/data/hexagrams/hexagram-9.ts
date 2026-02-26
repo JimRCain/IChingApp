@@ -1,8 +1,11 @@
 export const hexagram9 = {
   number: 9,
-  name: "Small Taming",
-  nameCn: "小畜",
+  name: "Small Taming (小畜 - Xiǎo Chù)",
   heart: "Wind moving across the sky. Invisible, yet gathering clouds. Unseen, yet bending trees. This is the small taming—not the dramatic victory, not the grand gesture, but the steady, patient influence that shapes things from within. The wind does not fight the sky; it moves through it. And in its moving, it gathers, accumulates, prepares. Something is being tamed here, but gently. Like training a young plant to grow straight, like teaching a stream to flow without flooding. Small taming, large results—but only if you do not rush.",
+  ancient: {
+    chinese: "小畜。亨。密雲不雨，自我西郊。",
+    rendering: "Small Taming has success. Dense clouds, no rain from our western region."
+  },
   judgment: "Success comes, but not through force. The clouds are dense, heavy with promise, but the rain has not yet fallen. This is the moment of gathering, of accumulating, of preparing. Do not mistake the delay for failure. The small taming is working—invisible, patient, persistent. Your influence is being felt, your actions are accumulating, but the result is not yet visible. Trust the process. The rain will fall when the clouds are full enough. Your western region—the place you come from, your own ground—has not yet released its fullness. Wait. Gather. Tame the small things, and the large will follow.",
   image: "Wind moves across the sky. The noble one refines the outer appearance of their virtue. Wind across the sky: it touches everything, but changes nothing by force. It cools, it moves, it prepares. In the same way, the noble one refines their outer expression of virtue. Not the inner essence—that is already there. But the way it appears, the way it meets the world, the way it influences without forcing. This is the small taming: making your virtue accessible, attractive, gentle. Like wind, you cannot be seen, but you can be felt.",
   lines: [
@@ -13,5 +16,16 @@ export const hexagram9 = {
     "If you are sincere and loyally attached, you are rich in your neighbor. The small taming works through closeness, through loyalty, through the quiet bonds that tie you to those around you. You become rich not in gold, but in neighbor—in the presence of those who know you, trust you, walk with you. This is wealth that cannot be stolen, that does not depreciate, that grows with every small act of loyalty. The sincere person, loyally attached, lacks nothing that matters.",
     "The rain comes, the rain rests. The full harvest is at hand. If you are sincere, the moon is nearly full. But if the superior person persists in their course, misfortune threatens. The clouds have finally released. The rain falls, then rests. The harvest is nearly ready. The moon is almost full. This is the moment of near-completion, the most dangerous time. If you persist now, if you try to push the last inch, to force the final drop, you invite misfortune. The small taming teaches: even at the threshold of fulfillment, remain gentle. The rain knows when to stop. The moon does not struggle to be full. Let completion come of itself."
   ],
-  binary: "111011"
+  trigrams: {
+    lower: {
+      name: "Qián (Heaven)",
+      nature: "The creative, the strong, the power to act"
+    },
+    upper: {
+      name: "Xùn (Wind)",
+      nature: "The gentle, penetrating, the power to influence"
+    },
+    description: "Heaven below, wind above. The creative power, strong and unwavering, lies beneath. Above it, the wind moves—gentle, persistent, penetrating. This is the small taming: strength tempered by gentleness, power guided by influence. The wind does not command heaven; it moves across it, gathering clouds, preparing rain. Heaven does not resist the wind; it receives it, lets it do its work. When strength and gentleness work together, the small tames the great."
+  },
+  taoist_reflection: "The Tao Te Ching says: 'The softest thing in the world rides over the hardest thing in the world. That which has no substance enters where there is no space. Thus I know the value of non-action.' Hexagram 9 is the living proof. Wind, the softest thing, moves across heaven, the hardest, and gathers clouds. It does not fight; it penetrates. It does not command; it influences. This is the small taming: not the force that breaks, but the gentleness that shapes. The rain falls when the clouds are ready, not when heaven demands it. The harvest comes when the grain is ripe, not when the farmer wills it. In your own life, the small taming works the same way. Be sincere. Be loyal. Be gentle. Let the small things accumulate. And when the rain comes, let it rest. The moon is nearly full. Do not reach for it. It will reach you."
 };
