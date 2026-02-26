@@ -1,3 +1,5 @@
+"use client";
+
 import IChingApp from "@/components/IChingApp";
 
 const Index = () => {

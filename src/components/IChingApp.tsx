@@ -1,256 +1,268 @@
 "use client";
 
-import { useState } from "react";
+import React, { useState, useCallback } from "react";
+import { LanguageToggle } from "./LanguageToggle";
+import { HexagramDisplay } from "./HexagramDisplay";
 import ichingData from "@/data/iching-data.json";
-import { Button } from "@/components/ui/button";
-import { Card } from "@/components/ui/card";
+import type { IChingData } from "@/types/iching";
 
-interface CoinToss {
-  value: number;
-  isChanging: boolean;
-}
+const data = ichingData as IChingData;
+
+type Language = "en" | "zh";
 
 interface LineResult {
   value: number;
   isChanging: boolean;
+  display: string;
 }
 
-type Hexagram = (typeof ichingData.hexagrams)[0];
+interface ReadingResult {
+  primaryHexagram: number;
+  transformedHexagram: number | null;
+  lines: LineResult[];
+  changingLines: number[];
+}
 
-const IChingApp = () => {
+const translations = {
+  en: {
+    title: "I Ching",
+    questionPlaceholder: "Ask your question (optional)",
+    throwCoins: "Throw Coins",
+    newReading: "New Reading",
+    yourQuestion: "Your Question",
+    primaryHexagram: "Primary Hexagram",
+    changingLines: "Changing Lines",
+    transformedHexagram: "Transformed Hexagram",
+    noChangingLines: "No changing lines",
+    noTransformation: "No transformation",
+    line: "Line",
+    youngYang: "Young Yang",
+    youngYin: "Young Yin",
+    oldYang: "Old Yang",
+    oldYin: "Old Yin",
+    changing: "Changing",
+    stable: "Stable",
+  },
+  zh: {
+    title: "易经",
+    questionPlaceholder: "输入您的问题（可选）",
+    throwCoins: "掷币",
+    newReading: "新卦",
+    yourQuestion: "您的问题",
+    primaryHexagram: "本卦",
+    changingLines: "变爻",
+    transformedHexagram: "变卦",
+    noChangingLines: "无变爻",
+    noTransformation: "无变卦",
+    line: "爻",
+    youngYang: "少阳",
+    youngYin: "少阴",
+    oldYang: "老阳",
+    oldYin: "老阴",
+    changing: "变",
+    stable: "静",
+  },
+};
+
+const IChingApp: React.FC = () => {
+  const [language, setLanguage] = useState<Language>("en");
+  const [question, setQuestion] = useState("");
   const [lines, setLines] = useState<LineResult[]>([]);
-  const [currentToss, setCurrentToss] = useState(0);
-  const [result, setResult] = useState<Hexagram | null>(null);
-  const [transformedHexagram, setTransformedHexagram] = useState<Hexagram | null>(null);
-  const [isDivining, setIsDivining] = useState(false);
+  const [isComplete, setIsComplete] = useState(false);
+  const [result, setResult] = useState<ReadingResult | null>(null);
 
-  const tossCoins = (): CoinToss => {
-    const value = Math.random() < 0.5 ? 2 : 3;
-    return {
-      value,
-      isChanging: false,
-    };
-  };
+  const t = translations[language];
 
-  const handleToss = () => {
-    if (currentToss >= 6) return;
-
-    let sum = 0;
-    for (let i = 0; i < 3; i++) {
-      sum += tossCoins().value;
-    }
-
-    let lineValue: number;
-    let isChanging = false;
+  const generateLine = useCallback((): LineResult => {
+    const coins = [
+      Math.random() < 0.5 ? 2 : 3,
+      Math.random() < 0.5 ? 2 : 3,
+      Math.random() < 0.5 ? 2 : 3,
+    ];
+    const sum = coins.reduce((a, b) => a + b, 0);
+    
+    let value: number;
+    let isChanging: boolean;
+    let display: string;
 
     if (sum === 6) {
-      lineValue = 6;
+      value = 6;
       isChanging = true;
+      display = language === "en" ? "Old Yin" : "老阴";
     } else if (sum === 7) {
-      lineValue = 7;
+      value = 7;
+      isChanging = false;
+      display = language === "en" ? "Young Yang" : "少阳";
     } else if (sum === 8) {
-      lineValue = 8;
+      value = 8;
+      isChanging = false;
+      display = language === "en" ? "Young Yin" : "少阴";
     } else {
-      lineValue = 9;
+      value = 9;
       isChanging = true;
+      display = language === "en" ? "Old Yang" : "老阳";
     }
 
-    const newLines = [...lines, { value: lineValue, isChanging }];
-    setLines(newLines);
-    setCurrentToss(currentToss + 1);
+    return { value, isChanging, display };
+  }, [language]);
 
-    if (currentToss + 1 === 6) {
-      let hexNumber = 0;
-      let transformedNumber = 0;
+  const handleThrow = useCallback(() => {
+    if (lines.length < 6) {
+      const newLine = generateLine();
+      const newLines = [...lines, newLine];
+      setLines(newLines);
 
-      for (let i = 0; i < 6; i++) {
-        const line = newLines[i];
-        const primaryBit = line.value === 7 || line.value === 9 ? 1 : 0;
-        let transformedBit = primaryBit;
-        if (line.value === 6) {
-          transformedBit = 1;
-        } else if (line.value === 9) {
-          transformedBit = 0;
-        }
+      if (newLines.length === 6) {
+        const primaryBinary = newLines.map(line => line.value === 7 || line.value === 9 ? "1" : "0").join("");
+        const transformedBinary = newLines.map(line => {
+          if (line.value === 6) return "1";
+          if (line.value === 9) return "0";
+          return line.value === 7 || line.value === 9 ? "1" : "0";
+        }).join("");
 
-        hexNumber += primaryBit * Math.pow(2, i);
-        transformedNumber += transformedBit * Math.pow(2, i);
+        const primaryHexagram = data.hexagrams.find(h => h.binary === primaryBinary)?.number || 1;
+        const transformedHexagram = data.hexagrams.find(h => h.binary === transformedBinary)?.number || null;
+        
+        const changingLines = newLines
+          .map((line, index) => {
+            if (line.value === 6 || line.value === 9) {
+              return index + 1;
+            }
+            return -1;
+          })
+          .filter(lineNum => lineNum !== -1);
+
+        setResult({
+          primaryHexagram,
+          transformedHexagram: transformedHexagram === primaryHexagram ? null : transformedHexagram,
+          lines: newLines,
+          changingLines,
+        });
+        setIsComplete(true);
       }
-
-      const primaryHexagram = ichingData.hexagrams.find((h) => h.number === hexNumber + 1);
-      const transformedHex = ichingData.hexagrams.find((h) => h.number === transformedNumber + 1);
-
-      setResult(primaryHexagram || null);
-      setTransformedHexagram(transformedHex || null);
-      setIsDivining(false);
     }
-  };
+  }, [lines, generateLine]);
 
-  const startDivination = () => {
+  const handleReset = useCallback(() => {
     setLines([]);
-    setCurrentToss(0);
+    setIsComplete(false);
     setResult(null);
-    setTransformedHexagram(null);
-    setIsDivining(true);
-  };
+    setQuestion("");
+  }, []);
 
-  const getLineDisplay = (line: LineResult) => {
-    if (line.value === 6) return "⚋ ⚋";
-    if (line.value === 7) return "⚊⚊⚊";
-    if (line.value === 8) return "⚋ ⚋";
-    if (line.value === 9) return "⚊⚊⚊";
-    return "";
-  };
-
-  const getLineLabel = (line: LineResult) => {
-    if (line.value === 6) return "Old Yin (changing)";
-    if (line.value === 7) return "Young Yang";
-    if (line.value === 8) return "Young Yin";
-    if (line.value === 9) return "Old Yang (changing)";
-    return "";
-  };
+  const primaryHexagramData = result ? data.hexagrams.find(h => h.number === result.primaryHexagram) : null;
+  const transformedHexagramData = result && result.transformedHexagram ? data.hexagrams.find(h => h.number === result.transformedHexagram) : null;
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-slate-900 via-purple-900 to-slate-900 text-white p-8">
-      <div className="max-w-4xl mx-auto">
-        <h1 className="text-4xl font-bold text-center mb-2 bg-gradient-to-r from-amber-200 to-yellow-400 bg-clip-text text-transparent">
-          I Ching Oracle
-        </h1>
-        <p className="text-center text-slate-300 mb-8">
-          The Book of Changes - Ancient Wisdom for Modern Times
-        </p>
+    <div className="min-h-screen bg-[#121212] text-[#e0e0e0]">
+      <div className="max-w-[800px] mx-auto px-4 py-8">
+        <header className="flex justify-between items-center mb-8">
+          <h1 className="text-3xl font-serif font-bold text-[#3a5f6e]">{t.title}</h1>
+          <LanguageToggle language={language} setLanguage={setLanguage} />
+        </header>
 
-        {!isDivining && !result && (
-          <Card className="p-8 bg-slate-800/50 border-slate-700 backdrop-blur">
-            <div className="text-center">
-              <p className="text-lg mb-6 text-slate-300">
-                Focus on your question and consult the oracle
-              </p>
-              <Button
-                onClick={startDivination}
-                className="bg-gradient-to-r from-amber-500 to-yellow-500 hover:from-amber-600 hover:to-yellow-600 text-white px-8 py-6 text-lg"
-              >
-                Begin Divination
-              </Button>
-            </div>
-          </Card>
-        )}
-
-        {isDivining && (
-          <Card className="p-8 bg-slate-800/50 border-slate-700 backdrop-blur">
-            <div className="text-center">
-              <p className="text-xl mb-4">
-                Toss {currentToss + 1} of 6
-              </p>
-              <p className="text-slate-400 mb-6">
-                Focus on your question...
-              </p>
-              <Button
-                onClick={handleToss}
-                className="bg-gradient-to-r from-purple-500 to-pink-500 hover:from-purple-600 hover:to-pink-600 text-white px-8 py-6 text-lg"
-              >
-                Toss the Coins
-              </Button>
-
-              <div className="mt-8 space-y-2">
-                {lines.map((line, index) => (
-                  <div
-                    key={index}
-                    className="text-2xl font-mono text-amber-300"
-                  >
-                    Line {6 - index}: {getLineDisplay(line)} {line.isChanging ? "✦" : ""}
-                  </div>
-                ))}
-              </div>
-            </div>
-          </Card>
-        )}
-
-        {result && (
-          <div className="space-y-6">
-            <Card className="p-6 bg-slate-800/50 border-slate-700 backdrop-blur">
-              <h2 className="text-2xl font-bold mb-2 text-amber-300">
-                Hexagram {result.number}: {result.name}
-              </h2>
-              <p className="text-slate-400 italic mb-4">{result.ancient.chinese}</p>
-              <p className="text-slate-300 mb-4">{result.ancient.rendering}</p>
-
-              <div className="flex justify-center my-6">
-                <div className="space-y-1">
-                  {[...Array(6)].map((_, i) => {
-                    const line = lines[5 - i];
-                    const isYang = line.value === 7 || line.value === 9;
-                    return (
-                      <div
-                        key={i}
-                        className={`text-3xl font-mono ${line.isChanging ? "text-amber-400" : "text-slate-300"}`}
-                      >
-                        {isYang ? "⚊⚊⚊" : "⚋ ⚋"} {line.isChanging ? "✦" : ""}
-                      </div>
-                    );
-                  })}
-                </div>
+        <div className="space-y-6">
+          {!isComplete && (
+            <div className="space-y-4">
+              <div>
+                <label htmlFor="question" className="block text-sm mb-2 text-[#e0e0e0]">
+                  {t.questionPlaceholder}
+                </label>
+                <input
+                  id="question"
+                  type="text"
+                  value={question}
+                  onChange={(e) => setQuestion(e.target.value)}
+                  className="w-full px-4 py-3 bg-[#1e1e1e] border border-[#3a5f6e] rounded-lg text-[#e0e0e0] focus:outline-none focus:ring-2 focus:ring-[#3a5f6e]"
+                  placeholder={t.questionPlaceholder}
+                />
               </div>
 
-              {lines.some((l) => l.isChanging) && transformedHexagram && (
-                <div className="mt-4 p-4 bg-purple-900/30 rounded-lg">
-                  <p className="text-sm text-slate-400 mb-2">Transforms to:</p>
-                  <p className="text-lg text-amber-300">
-                    Hexagram {transformedHexagram.number}: {transformedHexagram.name}
-                  </p>
+              <button
+                onClick={handleThrow}
+                disabled={lines.length >= 6}
+                className="w-full min-h-[48px] bg-[#3a5f6e] hover:bg-[#2d4a56] disabled:bg-[#2a2a2a] disabled:cursor-not-allowed text-white font-medium rounded-lg transition-colors"
+              >
+                {lines.length === 0 ? t.throwCoins : `${t.throwCoins} (${lines.length}/6)`}
+              </button>
+
+              {lines.length > 0 && (
+                <div className="space-y-2">
+                  {lines.map((line, index) => (
+                    <div key={index} className="flex items-center gap-3 p-3 bg-[#1e1e1e] rounded-lg">
+                      <span className="text-sm text-[#3a5f6e]">{t.line} {index + 1}:</span>
+                      <span className="font-serif">{line.display}</span>
+                      <span className={`ml-auto px-2 py-1 rounded text-xs font-medium ${
+                        line.isChanging 
+                          ? "bg-[#3a5f6e] text-white" 
+                          : "bg-[#2a2a2a] text-[#888]"
+                      }`}>
+                        {line.isChanging ? t.changing : t.stable}
+                      </span>
+                      <span className="text-2xl">
+                        {line.value === 7 || line.value === 9 ? "━━━" : "━ ━"}
+                      </span>
+                    </div>
+                  ))}
                 </div>
               )}
-            </Card>
-
-            <Card className="p-6 bg-slate-800/50 border-slate-700 backdrop-blur">
-              <h3 className="text-xl font-semibold mb-3 text-amber-200">The Heart</h3>
-              <p className="text-slate-300 leading-relaxed">{result.heart}</p>
-            </Card>
-
-            <Card className="p-6 bg-slate-800/50 border-slate-700 backdrop-blur">
-              <h3 className="text-xl font-semibold mb-3 text-amber-200">Judgment</h3>
-              <p className="text-slate-300 leading-relaxed">{result.judgment}</p>
-            </Card>
-
-            <Card className="p-6 bg-slate-800/50 border-slate-700 backdrop-blur">
-              <h3 className="text-xl font-semibold mb-3 text-amber-200">Image</h3>
-              <p className="text-slate-300 leading-relaxed">{result.image}</p>
-            </Card>
-
-            {lines.some((l) => l.isChanging) && (
-              <Card className="p-6 bg-slate-800/50 border-slate-700 backdrop-blur">
-                <h3 className="text-xl font-semibold mb-3 text-amber-200">Changing Lines</h3>
-                <div className="space-y-3">
-                  {lines.map((line, index) =>
-                    line.isChanging ? (
-                      <div key={index} className="p-3 bg-purple-900/30 rounded-lg">
-                        <p className="text-amber-300 font-medium mb-1">
-                          Line {6 - index}: {getLineLabel(line)}
-                        </p>
-                        <p className="text-slate-300">{result.lines[index]}</p>
-                      </div>
-                    ) : null
-                  )}
-                </div>
-              </Card>
-            )}
-
-            <Card className="p-6 bg-slate-800/50 border-slate-700 backdrop-blur">
-              <h3 className="text-xl font-semibold mb-3 text-amber-200">Taoist Reflection</h3>
-              <p className="text-slate-300 leading-relaxed italic">{result.taoist_reflection}</p>
-            </Card>
-
-            <div className="text-center">
-              <Button
-                onClick={startDivination}
-                variant="outline"
-                className="border-slate-600 text-slate-300 hover:bg-slate-700"
-              >
-                Consult Again
-              </Button>
             </div>
-          </div>
-        )}
+          )}
+
+          {isComplete && result && (
+            <div className="space-y-6">
+              {question && (
+                <div className="p-4 bg-[#1e1e1e] rounded-lg">
+                  <h3 className="text-sm text-[#3a5f6e] mb-1">{t.yourQuestion}</h3>
+                  <p className="font-serif">{question}</p>
+                </div>
+              )}
+
+              {primaryHexagramData && (
+                <HexagramDisplay
+                  title={t.primaryHexagram}
+                  hexagram={primaryHexagramData}
+                  language={language}
+                />
+              )}
+
+              <div className="p-4 bg-[#1e1e1e] rounded-lg">
+                <h3 className="text-sm text-[#3a5f6e] mb-2">{t.changingLines}</h3>
+                {result.changingLines.length > 0 ? (
+                  <div className="space-y-2">
+                    {result.changingLines.map((lineNum) => (
+                      <p key={lineNum} className="font-serif">
+                        {t.line} {lineNum}: {primaryHexagramData?.lines[lineNum - 1]}
+                      </p>
+                    ))}
+                  </div>
+                ) : (
+                  <p className="text-[#888]">{t.noChangingLines}</p>
+                )}
+              </div>
+
+              {transformedHexagramData && result.transformedHexagram ? (
+                <HexagramDisplay
+                  title={t.transformedHexagram}
+                  hexagram={transformedHexagramData}
+                  language={language}
+                />
+              ) : (
+                <div className="p-4 bg-[#1e1e1e] rounded-lg">
+                  <h3 className="text-sm text-[#3a5f6e] mb-1">{t.transformedHexagram}</h3>
+                  <p className="text-[#888]">{t.noTransformation}</p>
+                </div>
+              )}
+
+              <button
+                onClick={handleReset}
+                className="w-full min-h-[48px] bg-[#3a5f6e] hover:bg-[#2d4a56] text-white font-medium rounded-lg transition-colors"
+              >
+                {t.newReading}
+              </button>
+            </div>
+          )}
+        </div>
       </div>
     </div>
   );
