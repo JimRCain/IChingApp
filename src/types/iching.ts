@@ -7,7 +7,3 @@ export interface Hexagram {
   lines: string[];
   binary: string;
 }
-
-export interface IChingData {
-  hexagrams: Hexagram[];
-}
