@@ -1,56 +1,101 @@
 "use client";
 
 import React from "react";
-
-interface HexagramData {
-  number: number;
-  nameEn: string;
-  nameCn: string;
-  judgment: string;
-  image: string;
-  lines: string[];
-  binary: string;
-}
+import type { Hexagram } from "@/types/iching";
 
 interface HexagramDisplayProps {
   title: string;
-  hexagram: HexagramData;
+  hexagram: Hexagram;
   language: "en" | "zh";
 }
 
 export const HexagramDisplay: React.FC<HexagramDisplayProps> = ({ title, hexagram, language }) => {
-  const binaryToLines = (binary: string) => {
-    return binary.split("").map((bit) => (bit === "1" ? "━━━" : "━ ━"));
+  const binaryToLines = (name: string) => {
+    const isYang = name.toLowerCase().includes("heaven") || 
+                   name.toLowerCase().includes("thunder") || 
+                   name.toLowerCase().includes("fire") ||
+                   name.toLowerCase().includes("lake");
+    return isYang ? "━━━" : "━ ━";
   };
 
-  const lines = binaryToLines(hexagram.binary);
-
   return (
-    <div className="p-6 bg-[#1e1e1e] rounded-lg">
+    <div className="p-6 bg-[#1e1e1e] rounded-lg space-y-4">
       <h3 className="text-sm text-[#3a5f6e] mb-2">{title}</h3>
+      
+      {/* Name and Chinese */}
       <div className="flex items-start gap-6 mb-4">
         <div className="flex flex-col gap-1 text-2xl font-serif">
-          {lines.map((line, index) => (
+          {hexagram.lines.map((_, index) => (
             <div key={index} className="text-center w-20">
-              {line}
+              {binaryToLines(index < 3 ? hexagram.trigrams.lower.name : hexagram.trigrams.upper.name)}
             </div>
           ))}
         </div>
         <div className="flex-1">
           <h4 className="text-xl font-serif font-bold mb-2">
-            {hexagram.number}. {language === "en" ? hexagram.nameEn : hexagram.nameCn}
+            {hexagram.number}. {hexagram.name}
           </h4>
+          <p className="text-sm text-[#888] font-serif italic">{hexagram.ancient.chinese}</p>
         </div>
       </div>
-      <div className="space-y-3">
-        <div>
-          <h5 className="text-sm font-semibold text-[#3a5f6e] mb-1">Judgment:</h5>
-          <p className="text-[#e0e0e0] font-serif italic">{hexagram.judgment}</p>
+
+      {/* Heart */}
+      <div className="p-4 bg-[#2a2a2a] rounded-lg border-l-4 border-[#3a5f6e]">
+        <p className="text-[#e0e0e0] font-serif italic">{hexagram.heart}</p>
+      </div>
+
+      {/* Ancient Rendering */}
+      <div>
+        <h5 className="text-sm font-semibold text-[#3a5f6e] mb-1">Ancient Text:</h5>
+        <p className="text-[#e0e0e0] font-serif italic">{hexagram.ancient.rendering}</p>
+      </div>
+
+      {/* Judgment */}
+      <div>
+        <h5 className="text-sm font-semibold text-[#3a5f6e] mb-1">Judgment:</h5>
+        <p className="text-[#e0e0e0] font-serif">{hexagram.judgment}</p>
+      </div>
+
+      {/* Image */}
+      <div>
+        <h5 className="text-sm font-semibold text-[#3a5f6e] mb-1">Image:</h5>
+        <p className="text-[#e0e0e0] font-serif">{hexagram.image}</p>
+      </div>
+
+      {/* Trigrams */}
+      <div className="grid grid-cols-2 gap-4">
+        <div className="p-4 bg-[#2a2a2a] rounded-lg">
+          <h5 className="text-sm font-semibold text-[#3a5f6e] mb-1">Lower Trigram:</h5>
+          <p className="text-[#e0e0e0] font-serif">{hexagram.trigrams.lower.name}</p>
+          <p className="text-sm text-[#888]">{hexagram.trigrams.lower.nature}</p>
         </div>
-        <div>
-          <h5 className="text-sm font-semibold text-[#3a5f6e] mb-1">Image:</h5>
-          <p className="text-[#e0e0e0] font-serif italic">{hexagram.image}</p>
+        <div className="p-4 bg-[#2a2a2a] rounded-lg">
+          <h5 className="text-sm font-semibold text-[#3a5f6e] mb-1">Upper Trigram:</h5>
+          <p className="text-[#e0e0e0] font-serif">{hexagram.trigrams.upper.name}</p>
+          <p className="text-sm text-[#888]">{hexagram.trigrams.upper.nature}</p>
         </div>
+      </div>
+      <div className="p-4 bg-[#2a2a2a] rounded-lg">
+        <p className="text-[#e0e0e0] font-serif">{hexagram.trigrams.description}</p>
+      </div>
+
+      {/* Lines */}
+      <div>
+        <h5 className="text-sm font-semibold text-[#3a5f6e] mb-2">Lines:</h5>
+        <div className="space-y-3">
+          {hexagram.lines.map((line, index) => (
+            <div key={index} className="p-3 bg-[#2a2a2a] rounded-lg">
+              <p className="text-xs text-[#3a5f6e] mb-1">Line {index + 1}</p>
+              <p className="text-[#e0e0e0] font-serif">{line}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      {/* Taoist Reflection */}
+      <div className="p-4 bg-[#2a3a3f] rounded-lg border-l-4 border-[#5a7f8e]">
+        <h5 className="text-sm font-semibold text-[#5a7f8e] mb-2">Taoist Reflection:</h5>
+        <p className="text-[#e0e0e0] font-serif italic">{hexagram.taoist_reflection}</p>
       </div>
     </div>
   );

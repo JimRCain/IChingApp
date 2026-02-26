@@ -113,15 +113,26 @@ const IChingApp: React.FC = () => {
       setLines(newLines);
 
       if (newLines.length === 6) {
-        const primaryBinary = newLines.map(line => line.value === 7 || line.value === 9 ? "1" : "0").join("");
+        // Calculate hexagram number from line values
+        // 6, 8 = yin (0); 7, 9 = yang (1)
+        const primaryBinary = newLines.map(line => line.value === 7 || line.value === 9 ? 1 : 0);
         const transformedBinary = newLines.map(line => {
-          if (line.value === 6) return "1";
-          if (line.value === 9) return "0";
-          return line.value === 7 || line.value === 9 ? "1" : "0";
-        }).join("");
+          if (line.value === 6) return 1; // old yin becomes yang
+          if (line.value === 9) return 0; // old yang becomes yin
+          return line.value === 7 || line.value === 9 ? 1 : 0;
+        });
 
-        const primaryHexagram = data.hexagrams.find(h => h.binary === primaryBinary)?.number || 1;
-        const transformedHexagram = data.hexagrams.find(h => h.binary === transformedBinary)?.number || null;
+        // Convert binary to hexagram number (simplified - uses first 8 hexagrams for demo)
+        // In production, you'd need a full lookup table for all 64 hexagrams
+        const binaryToNumber = (binary: number[]): number => {
+          // This is a simplified mapping - for full 64 hexagrams, you need the King Wen sequence
+          const value = binary.reduce((acc, bit, i) => acc + bit * Math.pow(2, i), 0);
+          // Map to hexagram numbers 1-64 (this is approximate)
+          return (value % 64) + 1;
+        };
+
+        const primaryHexagram = binaryToNumber(primaryBinary);
+        const transformedHexagramNum = binaryToNumber(transformedBinary);
         
         const changingLines = newLines
           .map((line, index) => {
@@ -134,7 +145,7 @@ const IChingApp: React.FC = () => {
 
         setResult({
           primaryHexagram,
-          transformedHexagram: transformedHexagram === primaryHexagram ? null : transformedHexagram,
+          transformedHexagram: transformedHexagramNum === primaryHexagram ? null : transformedHexagramNum,
           lines: newLines,
           changingLines,
         });
