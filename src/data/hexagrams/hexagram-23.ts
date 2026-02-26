@@ -1,6 +1,8 @@
 export const hexagram23 = {
   number: 23,
   name: "Splitting Apart (剝 - Bō)",
+  nameCn: "剝",
+  binary: "000001",
   heart: "Mountain above, earth below. The mountain crumbles into the earth. This is splitting apart: not the sudden crash, but the slow erosion, the gradual falling away of what can no longer hold. The upper lines are yang, but they are being worn down by the yin below. This is not disaster; it is the natural cycle. What is false falls away. What is real remains.",
   ancient: {
     chinese: "剝。不利有攸往。",

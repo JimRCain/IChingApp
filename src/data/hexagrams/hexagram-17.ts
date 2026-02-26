@@ -1,6 +1,8 @@
 export const hexagram17 = {
   number: 17,
   name: "Following (隨 - Suí)",
+  nameCn: "隨",
+  binary: "011001",
   heart: "Lake above, thunder below. The thunder stirs in the depths; the lake receives it on the surface. This is following: not the blind obedience of the weak, but the conscious choice of the wise. The lake does not resist the thunder; it reflects it, amplifies it, carries it outward. To follow well is to be like the lake: open, responsive, carrying forward what is worthy of being carried.",
   ancient: {
     chinese: "隨。元亨利貞，无咎。",

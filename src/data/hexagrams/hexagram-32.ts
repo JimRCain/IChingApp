@@ -1,6 +1,8 @@
 export const hexagram32 = {
   number: 32,
   name: "Duration (恆 - Héng)",
+  nameCn: "恆",
+  binary: "001110",
   heart: "Thunder above, wind below. The thunder rolls; the wind blows. Both are movement, but movement that endures. This is duration: not the stillness that never changes, but the movement that maintains its direction. The thunder does not stop being thunder; the wind does not stop being wind. They move, but they remain themselves. This is the nature of duration: to change while remaining true.",
   ancient: {
     chinese: "恆。亨，无咎，利貞。利有攸往。",

@@ -1,6 +1,8 @@
 export const hexagram16 = {
   number: 16,
   name: "Enthusiasm (豫 - Yù)",
+  nameCn: "豫",
+  binary: "000100",
   heart: "Thunder above, earth below. The thunder rolls across the earth, and everything stirs. This is enthusiasm: not the shallow excitement of the moment, but the deep resonance that moves the whole. Thunder does not force the earth to respond; the earth responds because it is in its nature to respond. True enthusiasm is this resonance: the inner truth meeting the outer moment, and everything moving together.",
   ancient: {
     chinese: "豫。利建侯行師。",

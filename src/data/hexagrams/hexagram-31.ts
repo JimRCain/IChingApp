@@ -1,6 +1,8 @@
 export const hexagram31 = {
   number: 31,
   name: "Influence (Wooing) (咸 - Xián)",
+  nameCn: "咸",
+  binary: "011100",
   heart: "Lake above, mountain below. The lake sinks toward the mountain; the mountain rises to meet it. This is influence: not the force that compels, but the attraction that draws. The mountain does not reach for the lake; the lake does not command the mountain. They simply move toward each other, as things do when they belong together. This is wooing: the mutual recognition that becomes union.",
   ancient: {
     chinese: "咸。亨，利貞。取女吉。",

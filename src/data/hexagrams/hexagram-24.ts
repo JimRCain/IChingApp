@@ -1,6 +1,8 @@
 export const hexagram24 = {
   number: 24,
   name: "Return (The Turning Point) (復 - Fù)",
+  nameCn: "復",
+  binary: "000010",
   heart: "Earth above, thunder below. The thunder stirs beneath the earth—the first stirring of yang after the dark of winter. This is return: not the triumphant arrival, but the quiet turning, the first breath after holding, the first light after the longest night. One yang line returns beneath five yin lines. It is small, but it is everything. The turning point has come.",
   ancient: {
     chinese: "復。亨。出入无疾，朋來无咎。反復其道，七日來復，利有攸往。",

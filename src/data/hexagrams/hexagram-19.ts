@@ -1,6 +1,8 @@
 export const hexagram19 = {
   number: 19,
   name: "Approach (臨 - Lín)",
+  nameCn: "臨",
+  binary: "000011",
   heart: "Earth above, lake below. The earth sinks toward the lake; the lake rises to meet it. This is approach: the coming together of what has been separate. Not the sudden collision of opposites, but the gradual, natural drawing near. The earth does not command the lake to rise; the lake does not demand the earth to sink. They simply move toward each other, as things do when their time has come.",
   ancient: {
     chinese: "臨。元亨利貞。至于八月有凶。",

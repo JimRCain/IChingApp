@@ -1,6 +1,8 @@
 export const hexagram29 = {
   number: 29,
   name: "The Abysmal (Water) (坎 - Kǎn)",
+  nameCn: "坎",
+  binary: "010010",
   heart: "Water above, water below. The abyss upon the abyss. This is danger—not the danger that passes, but the danger that is the path. Water flows into the depths, filling them, moving through them. It does not fight the abyss; it becomes the abyss. And in becoming, it finds its way through. This is the teaching of water: to flow through danger, not around it.",
   ancient: {
     chinese: "習坎。有孚，維心亨，行有尚。",

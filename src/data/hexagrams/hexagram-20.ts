@@ -1,6 +1,8 @@
 export const hexagram20 = {
   number: 20,
   name: "Contemplation (View) (觀 - Guān)",
+  nameCn: "觀",
+  binary: "110000",
   heart: "Wind above, earth below. The wind moves across the earth, unseen but felt. This is contemplation: not the staring of the eye, but the seeing of the whole. The wind does not look at the earth; it knows the earth by moving across it. The earth does not look at the wind; it knows the wind by being moved. Contemplation is this knowing: not the knowledge of the observer about the observed, but the knowledge of participation, of being part of what you behold.",
   ancient: {
     chinese: "觀。盥而不薦，有孚顒若。",

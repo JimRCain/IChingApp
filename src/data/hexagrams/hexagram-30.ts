@@ -1,6 +1,8 @@
 export const hexagram30 = {
   number: 30,
   name: "The Clinging (Fire) (離 - Lí)",
+  nameCn: "離",
+  binary: "101101",
   heart: "Fire above, fire below. The flame that clings to what feeds it. This is clarity—not the cold clarity of the detached, but the warm clarity of the engaged. Fire does not burn alone; it clings to the wood, the oil, the fuel. It gives light by consuming. It gives warmth by transforming. This is the nature of clarity: to see by burning, to illuminate by consuming.",
   ancient: {
     chinese: "離。利貞，亨。畜牝牛，吉。",

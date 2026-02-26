@@ -1,6 +1,8 @@
 export const hexagram28 = {
   number: 28,
   name: "Preponderance of the Great (大過 - Dà Guò)",
+  nameCn: "大過",
+  binary: "011110",
   heart: "Lake above, wood below. The lake rises above the trees—the water too high, the weight too great. This is preponderance of the great: the excess that cannot be sustained. The beam sags under the weight. The structure is strained. This is not a time for small measures. The situation is extraordinary; it requires extraordinary action. But be careful: the excess that lifts can also drown.",
   ancient: {
     chinese: "大過。棟橈。利有攸往，亨。",

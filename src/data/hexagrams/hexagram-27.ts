@@ -1,6 +1,8 @@
 export const hexagram27 = {
   number: 27,
   name: "The Corners of the Mouth (Providing Nourishment) (頤 - Yí)",
+  nameCn: "頤",
+  binary: "100001",
   heart: "Mountain above, thunder below. The mountain is still; the thunder moves. Between them, the mouth—the place where what is taken in becomes what sustains. This is nourishment: not just the food you eat, but the words you speak, the thoughts you think, the company you keep. You are what you take in. You are also what you give out. The corners of the mouth reveal both.",
   ancient: {
     chinese: "頤。貞吉。觀頤，自求口實。",

@@ -1,6 +1,8 @@
 export const hexagram26 = {
   number: 26,
   name: "The Taming Power of the Great (大畜 - Dà Chù)",
+  nameCn: "大畜",
+  binary: "111001",
   heart: "Mountain above, heaven below. The mountain contains heaven—the vast power held within the solid form. This is the taming power of the great: not the suppression of power, but the holding of it, the containing of it until the time is right. Heaven is strong; the mountain is still. Together, they create the capacity to hold great power without releasing it prematurely. This is the wisdom of timing.",
   ancient: {
     chinese: "大畜。利貞。不家食吉。利涉大川。",

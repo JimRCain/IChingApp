@@ -1,6 +1,8 @@
 export const hexagram22 = {
   number: 22,
   name: "Grace (賁 - Bì)",
+  nameCn: "賁",
+  binary: "100100",
   heart: "Mountain above, fire below. The fire illuminates the mountain, making it beautiful. This is grace: not the superficial adornment that hides, but the inner light that reveals. The mountain does not need the fire to be a mountain, but the fire makes its beauty visible. Grace is this visibility: the form illuminated by the essence, the outer shaped by the inner. True grace is not added; it is revealed.",
   ancient: {
     chinese: "賁。亨。小利有攸往。",
