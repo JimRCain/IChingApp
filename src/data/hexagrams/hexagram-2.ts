@@ -1,6 +1,8 @@
 export const hexagram2 = {
   number: 2,
   name: "The Receptive (坤 - Kūn)",
+  nameCn: "坤",
+  binary: "000000",
   heart: "Six broken lines. Earth receiving heaven. The mare running across the endless plain, asking nothing, becoming everything. Where the Creative gives birth to ideas, the Receptive brings them into form. It does not initiate—it completes. It does not command—it supports. This is not weakness. The earth does not struggle to be fertile; it simply opens, and life springs forth.",
   ancient: {
     chinese: "坤。元亨利牝馬之貞。君子有攸往，先迷後得主，利。西南得朋，東北喪朋。安貞吉。",

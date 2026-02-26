@@ -1,6 +1,8 @@
 export const hexagram3 = {
   number: 3,
   name: "Difficulty at the Beginning (屯 - Zhūn)",
+  nameCn: "屯",
+  binary: "100010",
   heart: "Thunder and rain. The storm that breaks the drought. Below, thunder stirs; above, rain falls. But between them, clouds still gather, confused, heavy. This is the moment after conception and before birth—the quickening, the first stirring, the struggle to emerge. Everything is here, potential fully present, but not yet delivered. Difficulty at the Beginning is not failure; it is the birth pangs of creation.",
   ancient: {
     chinese: "屯。元亨利貞。勿用有攸往。利建侯。",

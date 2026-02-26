@@ -1,6 +1,8 @@
 export const hexagram8 = {
   number: 8,
   name: "Holding Together (比 - Bǐ)",
+  nameCn: "比",
+  binary: "000010",
   heart: "Water flowing to the earth. Not forced, not pushed—simply seeking its own level, finding the low places, joining with what is already there. This is holding together: the natural affinity that draws like to like, that creates community not by decree but by mutual recognition. The army organized; now it must unite. Not through command, but through the quiet gravity of shared purpose.",
   ancient: {
     chinese: "比。吉。原筮元永貞，无咎。不寧方來，後夫凶。",

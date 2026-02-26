@@ -1,6 +1,8 @@
 export const hexagram1 = {
   number: 1,
   name: "The Creative (乾 - Qián)",
+  nameCn: "乾",
+  binary: "111111",
   heart: "Six unbroken lines, stacked like a ladder to the sky. Pure yang. The force that moves the stars without effort, that turns the seasons without hurry. Before any doing, there is this: the power simply to be, to generate, to begin. The Creative does not struggle—it creates by being itself, the way the sky does not try to be vast, it simply is.",
   ancient: {
     chinese: "乾。元亨利貞。",

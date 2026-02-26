@@ -3,6 +3,7 @@
 import React, { useState, useCallback } from "react";
 import { LanguageToggle } from "./LanguageToggle";
 import { HexagramDisplay } from "./HexagramDisplay";
+import { getHexagramByBinary } from "@/data/hexagrams";
 import type { Hexagram } from "@/types/iching";
 
 type Language = "en" | "zh";
@@ -14,8 +15,8 @@ interface LineResult {
 }
 
 interface ReadingResult {
-  primaryHexagram: number;
-  transformedHexagram: number | null;
+  primaryHexagram: Hexagram | null;
+  transformedHexagram: Hexagram | null;
   lines: LineResult[];
   changingLines: number[];
   primaryBinary: string;
@@ -41,7 +42,6 @@ const translations = {
     oldYin: "Old Yin",
     changing: "Changing",
     stable: "Stable",
-    dataNotice: "Hexagram data to be added",
     binaryLabel: "Binary",
   },
   zh: {
@@ -62,7 +62,6 @@ const translations = {
     oldYin: "老阴",
     changing: "变",
     stable: "静",
-    dataNotice: "卦象数据待添加",
     binaryLabel: "二进制",
   },
 };
@@ -132,9 +131,14 @@ const IChingApp: React.FC = () => {
           })
           .filter(lineNum => lineNum !== -1);
 
+        const primaryHexagram = getHexagramByBinary(primaryBinary);
+        const transformedHexagram = primaryBinary !== transformedBinary 
+          ? getHexagramByBinary(transformedBinary) 
+          : null;
+
         setResult({
-          primaryHexagram: 0,
-          transformedHexagram: null,
+          primaryHexagram: primaryHexagram || null,
+          transformedHexagram,
           lines: newLines,
           changingLines,
           primaryBinary,
@@ -152,16 +156,9 @@ const IChingApp: React.FC = () => {
     setQuestion("");
   }, []);
 
-  const binaryToLines = (binary: string) => {
-    return binary.split("").map((bit) => (bit === "1" ? "━━━" : "━ ━"));
-  };
-
-  const primaryLines = result ? binaryToLines(result.primaryBinary) : [];
-  const transformedLines = result && result.transformedBinary ? binaryToLines(result.transformedBinary) : [];
-
   return (
     <div className="min-h-screen bg-[#121212] text-[#e0e0e0]">
-      <div className="max-w-[800px] mx-auto px-4 py-8">
+      <div className="max-w-[900px] mx-auto px-4 py-8">
         <header className="flex justify-between items-center mb-8">
           <h1 className="text-3xl font-serif font-bold text-[#3a5f6e]">{t.title}</h1>
           <LanguageToggle language={language} setLanguage={setLanguage} />
@@ -224,30 +221,26 @@ const IChingApp: React.FC = () => {
                 </div>
               )}
 
-              <div className="p-6 bg-[#1e1e1e] rounded-lg">
-                <h3 className="text-sm text-[#3a5f6e] mb-2">{t.primaryHexagram}</h3>
-                <div className="flex items-start gap-6 mb-4">
-                  <div className="flex flex-col gap-1 text-2xl font-serif">
-                    {primaryLines.map((line, index) => (
-                      <div key={index} className="text-center w-20">
-                        {line}
-                      </div>
-                    ))}
-                  </div>
-                  <div className="flex-1">
-                    <p className="text-[#888] text-sm">{t.dataNotice}</p>
-                    <p className="text-[#888] text-xs mt-2">{t.binaryLabel}: {result.primaryBinary}</p>
-                  </div>
+              {result.primaryHexagram ? (
+                <HexagramDisplay 
+                  title={t.primaryHexagram} 
+                  hexagram={result.primaryHexagram} 
+                  language={language}
+                />
+              ) : (
+                <div className="p-6 bg-[#1e1e1e] rounded-lg">
+                  <h3 className="text-sm text-[#3a5f6e] mb-2">{t.primaryHexagram}</h3>
+                  <p className="text-[#888]">Hexagram not found for binary: {result.primaryBinary}</p>
                 </div>
-              </div>
+              )}
 
               <div className="p-4 bg-[#1e1e1e] rounded-lg">
                 <h3 className="text-sm text-[#3a5f6e] mb-2">{t.changingLines}</h3>
                 {result.changingLines.length > 0 ? (
                   <div className="space-y-2">
                     {result.changingLines.map((lineNum) => (
-                      <p key={lineNum} className="font-serif text-[#888]">
-                        {t.line} {lineNum} - {t.dataNotice}
+                      <p key={lineNum} className="font-serif text-[#e0e0e0]">
+                        {t.line} {lineNum}
                       </p>
                     ))}
                   </div>
@@ -256,23 +249,12 @@ const IChingApp: React.FC = () => {
                 )}
               </div>
 
-              {result.transformedBinary && result.transformedBinary !== result.primaryBinary ? (
-                <div className="p-6 bg-[#1e1e1e] rounded-lg">
-                  <h3 className="text-sm text-[#3a5f6e] mb-2">{t.transformedHexagram}</h3>
-                  <div className="flex items-start gap-6 mb-4">
-                    <div className="flex flex-col gap-1 text-2xl font-serif">
-                      {transformedLines.map((line, index) => (
-                        <div key={index} className="text-center w-20">
-                          {line}
-                        </div>
-                      ))}
-                    </div>
-                    <div className="flex-1">
-                      <p className="text-[#888] text-sm">{t.dataNotice}</p>
-                      <p className="text-[#888] text-xs mt-2">{t.binaryLabel}: {result.transformedBinary}</p>
-                    </div>
-                  </div>
-                </div>
+              {result.transformedHexagram ? (
+                <HexagramDisplay 
+                  title={t.transformedHexagram} 
+                  hexagram={result.transformedHexagram} 
+                  language={language}
+                />
               ) : (
                 <div className="p-4 bg-[#1e1e1e] rounded-lg">
                   <h3 className="text-sm text-[#3a5f6e] mb-1">{t.transformedHexagram}</h3>
