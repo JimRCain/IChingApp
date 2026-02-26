@@ -3,10 +3,15 @@
 import React, { useState, useCallback } from "react";
 import { LanguageToggle } from "./LanguageToggle";
 import { HexagramDisplay } from "./HexagramDisplay";
-import ichingData from "@/data/iching-data.json";
-import type { IChingData } from "@/types/iching";
+import ichingData1 from "@/data/IChing1-32.json";
+import ichingData2 from "@/data/IChing33-64.json";
+import type { Hexagram } from "@/types/iching";
 
-const data = ichingData as IChingData;
+const data1 = ichingData1 as Hexagram[];
+const data2 = ichingData2 as Hexagram[];
+
+// Combine both arrays into one
+const allHexagrams = [...data1, ...data2];
 
 type Language = "en" | "zh";
 
@@ -120,8 +125,8 @@ const IChingApp: React.FC = () => {
           return line.value === 7 || line.value === 9 ? "1" : "0";
         }).join("");
 
-        const primaryHexagram = data.hexagrams.find(h => h.binary === primaryBinary)?.number || 1;
-        const transformedHexagram = data.hexagrams.find(h => h.binary === transformedBinary)?.number || null;
+        const primaryHexagram = allHexagrams.find(h => h.binary === primaryBinary)?.number || 1;
+        const transformedHexagram = allHexagrams.find(h => h.binary === transformedBinary)?.number || null;
         
         const changingLines = newLines
           .map((line, index) => {
@@ -150,8 +155,8 @@ const IChingApp: React.FC = () => {
     setQuestion("");
   }, []);
 
-  const primaryHexagramData = result ? data.hexagrams.find(h => h.number === result.primaryHexagram) : null;
-  const transformedHexagramData = result && result.transformedHexagram ? data.hexagrams.find(h => h.number === result.transformedHexagram) : null;
+  const primaryHexagramData = result ? allHexagrams.find(h => h.number === result.primaryHexagram) : null;
+  const transformedHexagramData = result && result.transformedHexagram ? allHexagrams.find(h => h.number === result.transformedHexagram) : null;
 
   return (
     <div className="min-h-screen bg-[#121212] text-[#e0e0e0]">

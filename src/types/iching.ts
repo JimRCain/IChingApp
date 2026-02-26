@@ -1,13 +1,27 @@
 export interface Hexagram {
   number: number;
-  nameEn: string;
-  nameCn: string;
+  name: string;
+  heart: string;
+  ancient: {
+    chinese: string;
+    rendering: string;
+  };
   judgment: string;
   image: string;
   lines: string[];
-  binary: string;
+  trigrams: {
+    lower: {
+      name: string;
+      nature: string;
+    };
+    upper: {
+      name: string;
+      nature: string;
+    };
+    description: string;
+  };
+  taoist_reflection: string;
+  binary?: string;
 }
 
-export interface IChingData {
-  hexagrams: Hexagram[];
-}
+export type IChingData = Hexagram[];
