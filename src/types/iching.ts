@@ -23,4 +23,5 @@ export interface Hexagram {
   };
   taoist_reflection: string;
   binary: string;
+  allLines?: string;
 }

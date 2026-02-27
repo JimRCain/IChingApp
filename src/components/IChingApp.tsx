@@ -17,6 +17,7 @@ interface LineResult {
 interface ChangingLineInfo {
   lineNum: number;
   text: string;
+  rule: string;
 }
 
 interface ReadingResult {
@@ -26,6 +27,8 @@ interface ReadingResult {
   changingLines: ChangingLineInfo[];
   primaryBinary: string;
   transformedBinary: string;
+  changingLineCount: number;
+  allLinesSpecial?: string;
 }
 
 const translations = {
@@ -39,7 +42,7 @@ const translations = {
     primaryHexagram: "Primary Hexagram",
     changingLines: "Changing Lines",
     transformedHexagram: "Transformed Hexagram",
-    noChangingLines: "No changing lines",
+    noChangingLines: "No changing lines - consult the Judgment and Image only",
     noTransformation: "No transformation",
     line: "Line",
     youngYang: "Young Yang",
@@ -49,6 +52,8 @@ const translations = {
     changing: "Changing",
     stable: "Stable",
     binaryLabel: "Binary",
+    advice: "Advice",
+    allLinesSpecial: "Special: All Lines Changing",
   },
   zh: {
     title: "易经",
@@ -60,7 +65,7 @@ const translations = {
     primaryHexagram: "本卦",
     changingLines: "变爻",
     transformedHexagram: "变卦",
-    noChangingLines: "无变爻",
+    noChangingLines: "无变爻 - 仅参考卦辞和象辞",
     noTransformation: "无变卦",
     line: "爻",
     youngYang: "少阳",
@@ -70,7 +75,163 @@ const translations = {
     changing: "变",
     stable: "静",
     binaryLabel: "二进制",
+    advice: "建议",
+    allLinesSpecial: "特例：六爻皆变",
   },
+};
+
+/**
+ * Determines which line texts to display based on traditional I Ching rules
+ * for changing lines (values 6 and 9).
+ */
+const getChangingLineTexts = (
+  lines: LineResult[],
+  primaryHexagram: Hexagram | null,
+  transformedHexagram: Hexagram | null
+): { changingLines: ChangingLineInfo[]; allLinesSpecial?: string } => {
+  if (!primaryHexagram) {
+    return { changingLines: [], allLinesSpecial: undefined };
+  }
+
+  // Find all changing lines (value 6 or 9)
+  const changingIndices = lines
+    .map((line, index) => (line.isChanging ? index : -1))
+    .filter((index) => index !== -1);
+
+  const changingLineCount = changingIndices.length;
+
+  // Rule 7: 6 changing lines
+  if (changingLineCount === 6) {
+    // Special case for Hexagram 1 (all 9s) or Hexagram 2 (all 6s)
+    const allNines = lines.every((line) => line.value === 9);
+    const allSixes = lines.every((line) => line.value === 6);
+
+    if (allNines && primaryHexagram.number === 1 && primaryHexagram.allLines) {
+      return {
+        changingLines: [],
+        allLinesSpecial: primaryHexagram.allLines,
+      };
+    }
+
+    if (allSixes && primaryHexagram.number === 2 && primaryHexagram.allLines) {
+      return {
+        changingLines: [],
+        allLinesSpecial: primaryHexagram.allLines,
+      };
+    }
+
+    // For 6 changing lines (not special case), show transformed hexagram only
+    return { changingLines: [], allLinesSpecial: undefined };
+  }
+
+  // Rule 1: 0 changing lines
+  if (changingLineCount === 0) {
+    return { changingLines: [], allLinesSpecial: undefined };
+  }
+
+  // Rule 2: 1 changing line - display that specific line
+  if (changingLineCount === 1) {
+    const index = changingIndices[0];
+    return {
+      changingLines: [
+        {
+          lineNum: index + 1,
+          text: primaryHexagram.lines[index] || "",
+          rule: "One changing line",
+        },
+      ],
+      allLinesSpecial: undefined,
+    };
+  }
+
+  // Rule 3: 2 changing lines
+  if (changingLineCount === 2) {
+    const [firstIndex, secondIndex] = changingIndices;
+    const firstLine = lines[firstIndex];
+    const secondLine = lines[secondIndex];
+
+    let selectedIndex: number;
+
+    // Check if both lines are same type (both 6 or both 9)
+    if (
+      (firstLine.value === 6 && secondLine.value === 6) ||
+      (firstLine.value === 9 && secondLine.value === 9)
+    ) {
+      // Same type: display the upper (higher position) line
+      selectedIndex = Math.max(firstIndex, secondIndex);
+    } else {
+      // Different types: display the line with value 6
+      selectedIndex = firstLine.value === 6 ? firstIndex : secondIndex;
+    }
+
+    return {
+      changingLines: [
+        {
+          lineNum: selectedIndex + 1,
+          text: primaryHexagram.lines[selectedIndex] || "",
+          rule: "Two changing lines",
+        },
+      ],
+      allLinesSpecial: undefined,
+    };
+  }
+
+  // Rule 4: 3 changing lines - display the middle line
+  if (changingLineCount === 3) {
+    // The middle index of the three changing lines
+    const middleIndex = changingIndices[1];
+    return {
+      changingLines: [
+        {
+          lineNum: middleIndex + 1,
+          text: primaryHexagram.lines[middleIndex] || "",
+          rule: "Three changing lines",
+        },
+      ],
+      allLinesSpecial: undefined,
+    };
+  }
+
+  // Rule 5: 4 changing lines - display the upper non-changing line
+  if (changingLineCount === 4) {
+    const nonChangingIndices = lines
+      .map((line, index) => (!line.isChanging ? index : -1))
+      .filter((index) => index !== -1);
+
+    // Get the upper (highest position) non-changing line
+    const upperNonChangingIndex = Math.max(...nonChangingIndices);
+
+    return {
+      changingLines: [
+        {
+          lineNum: upperNonChangingIndex + 1,
+          text: primaryHexagram.lines[upperNonChangingIndex] || "",
+          rule: "Four changing lines",
+        },
+      ],
+      allLinesSpecial: undefined,
+    };
+  }
+
+  // Rule 6: 5 changing lines - display the only non-changing line
+  if (changingLineCount === 5) {
+    const nonChangingIndex = lines.findIndex((line) => !line.isChanging);
+
+    if (nonChangingIndex !== -1) {
+      return {
+        changingLines: [
+          {
+            lineNum: nonChangingIndex + 1,
+            text: primaryHexagram.lines[nonChangingIndex] || "",
+            rule: "Five changing lines",
+          },
+        ],
+        allLinesSpecial: undefined,
+      };
+    }
+  }
+
+  return { changingLines: [], allLinesSpecial: undefined };
 };
 
 const IChingApp: React.FC = () => {
@@ -90,7 +251,7 @@ const IChingApp: React.FC = () => {
       Math.random() < 0.5 ? 2 : 3,
     ];
     const sum = coins.reduce((a, b) => a + b, 0);
-    
+
     let value: number;
     let isChanging: boolean;
     let display: string;
@@ -126,30 +287,31 @@ const IChingApp: React.FC = () => {
         setReadyToReveal(true);
       }
     } else if (readyToReveal) {
-      const primaryBinary = lines.map(line => line.value === 7 || line.value === 9 ? "1" : "0").join("");
-      const transformedBinary = lines.map(line => {
-        if (line.value === 6) return "1";
-        if (line.value === 9) return "0";
-        return line.value === 7 || line.value === 9 ? "1" : "0";
-      }).join("");
+      const primaryBinary = lines
+        .map((line) => (line.value === 7 || line.value === 9 ? "1" : "0"))
+        .join("");
+      const transformedBinary = lines
+        .map((line) => {
+          if (line.value === 6) return "1";
+          if (line.value === 9) return "0";
+          return line.value === 7 || line.value === 9 ? "1" : "0";
+        })
+        .join("");
 
       const primaryHexagram = getHexagramByBinary(primaryBinary);
-      const transformedHexagram = primaryBinary !== transformedBinary 
-        ? getHexagramByBinary(transformedBinary) 
-        : null;
+      const transformedHexagram =
+        primaryBinary !== transformedBinary
+          ? getHexagramByBinary(transformedBinary)
+          : null;
 
-      // Extract changing line texts from the primary hexagram
-      const changingLines: ChangingLineInfo[] = lines
-        .map((line, index) => {
-          if ((line.value === 6 || line.value === 9) && primaryHexagram) {
-            return {
-              lineNum: index + 1,
-              text: primaryHexagram.lines[index] || "",
-            };
-          }
-          return null;
-        })
-        .filter((lineInfo): lineInfo is ChangingLineInfo => lineInfo !== null);
+      // Get changing line texts based on traditional rules
+      const { changingLines, allLinesSpecial } = getChangingLineTexts(
+        lines,
+        primaryHexagram || null,
+        transformedHexagram || null
+      );
+
+      const changingLineCount = lines.filter((line) => line.isChanging).length;
 
       setResult({
         primaryHexagram: primaryHexagram || null,
@@ -158,6 +320,8 @@ const IChingApp: React.FC = () => {
         changingLines,
         primaryBinary,
         transformedBinary,
+        changingLineCount,
+        allLinesSpecial,
       });
       setIsComplete(true);
       setReadyToReveal(false);
@@ -176,7 +340,9 @@ const IChingApp: React.FC = () => {
     <div className="min-h-screen bg-[#121212] text-[#e0e0e0]">
       <div className="max-w-[900px] mx-auto px-4 py-8">
         <header className="flex justify-between items-center mb-8">
-          <h1 className="text-3xl font-serif font-bold text-[#3a5f6e]">{t.title}</h1>
+          <h1 className="text-3xl font-serif font-bold text-[#3a5f6e]">
+            {t.title}
+          </h1>
           <LanguageToggle language={language} setLanguage={setLanguage} />
         </header>
 
@@ -184,7 +350,10 @@ const IChingApp: React.FC = () => {
           {!isComplete && (
             <div className="space-y-4">
               <div>
-                <label htmlFor="question" className="block text-sm mb-2 text-[#e0e0e0]">
+                <label
+                  htmlFor="question"
+                  className="block text-sm mb-2 text-[#e0e0e0]"
+                >
                   {t.questionPlaceholder}
                 </label>
                 <input
@@ -201,24 +370,31 @@ const IChingApp: React.FC = () => {
                 onClick={handleThrow}
                 className="w-full min-h-[48px] bg-[#3a5f6e] hover:bg-[#2d4a56] disabled:bg-[#2a2a2a] disabled:cursor-not-allowed text-white font-medium rounded-lg transition-colors"
               >
-                {lines.length === 0 
-                  ? t.throwCoins 
-                  : readyToReveal 
-                    ? t.revealReading 
-                    : `${t.throwCoins} (${lines.length}/6)`}
+                {lines.length === 0
+                  ? t.throwCoins
+                  : readyToReveal
+                  ? t.revealReading
+                  : `${t.throwCoins} (${lines.length}/6)`}
               </button>
 
               {lines.length > 0 && (
                 <div className="space-y-2">
                   {lines.map((line, index) => (
-                    <div key={index} className="flex items-center gap-3 p-3 bg-[#1e1e1e] rounded-lg">
-                      <span className="text-sm text-[#3a5f6e]">{t.line} {index + 1}:</span>
+                    <div
+                      key={index}
+                      className="flex items-center gap-3 p-3 bg-[#1e1e1e] rounded-lg"
+                    >
+                      <span className="text-sm text-[#3a5f6e]">
+                        {t.line} {index + 1}:
+                      </span>
                       <span className="font-serif">{line.display}</span>
-                      <span className={`ml-auto px-2 py-1 rounded text-xs font-medium ${
-                        line.isChanging 
-                          ? "bg-[#3a5f6e] text-white" 
-                          : "bg-[#2a2a2a] text-[#888]"
-                      }`}>
+                      <span
+                        className={`ml-auto px-2 py-1 rounded text-xs font-medium ${
+                          line.isChanging
+                            ? "bg-[#3a5f6e] text-white"
+                            : "bg-[#2a2a2a] text-[#888]"
+                        }`}
+                      >
                         {line.isChanging ? t.changing : t.stable}
                       </span>
                       <span className="text-2xl">
@@ -235,33 +411,55 @@ const IChingApp: React.FC = () => {
             <div className="space-y-6">
               {question && (
                 <div className="p-4 bg-[#1e1e1e] rounded-lg">
-                  <h3 className="text-sm text-[#3a5f6e] mb-1">{t.yourQuestion}</h3>
+                  <h3 className="text-sm text-[#3a5f6e] mb-1">
+                    {t.yourQuestion}
+                  </h3>
                   <p className="font-serif">{question}</p>
                 </div>
               )}
 
               {result.primaryHexagram ? (
-                <HexagramDisplay 
-                  title={t.primaryHexagram} 
-                  hexagram={result.primaryHexagram} 
+                <HexagramDisplay
+                  title={t.primaryHexagram}
+                  hexagram={result.primaryHexagram}
                   language={language}
                 />
               ) : (
                 <div className="p-6 bg-[#1e1e1e] rounded-lg">
-                  <h3 className="text-sm text-[#3a5f6e] mb-2">{t.primaryHexagram}</h3>
-                  <p className="text-[#888]">Hexagram not found for binary: {result.primaryBinary}</p>
+                  <h3 className="text-sm text-[#3a5f6e] mb-2">
+                    {t.primaryHexagram}
+                  </h3>
+                  <p className="text-[#888]">
+                    Hexagram not found for binary: {result.primaryBinary}
+                  </p>
                 </div>
               )}
 
               <div className="p-4 bg-[#1e1e1e] rounded-lg">
-                <h3 className="text-sm text-[#3a5f6e] mb-2">{t.changingLines}</h3>
-                {result.changingLines.length > 0 ? (
+                <h3 className="text-sm text-[#3a5f6e] mb-2">
+                  {t.changingLines} ({result.changingLineCount})
+                </h3>
+                {result.allLinesSpecial ? (
+                  <div className="space-y-2">
+                    <p className="font-serif text-[#3a5f6e] font-medium">
+                      {t.allLinesSpecial}
+                    </p>
+                    <p className="font-serif text-[#e0e0e0] italic">
+                      {result.allLinesSpecial}
+                    </p>
+                  </div>
+                ) : result.changingLines.length > 0 ? (
                   <div className="space-y-4">
                     {result.changingLines.map((lineInfo) => (
                       <div key={lineInfo.lineNum} className="space-y-2">
-                        <p className="font-serif text-[#3a5f6e] font-medium">
-                          {t.line} {lineInfo.lineNum}
-                        </p>
+                        <div className="flex items-center gap-2">
+                          <p className="font-serif text-[#3a5f6e] font-medium">
+                            {t.line} {lineInfo.lineNum}
+                          </p>
+                          <span className="text-xs text-[#888] bg-[#2a2a2a] px-2 py-1 rounded">
+                            {lineInfo.rule}
+                          </span>
+                        </div>
                         <p className="font-serif text-[#e0e0e0] italic">
                           {lineInfo.text}
                         </p>
@@ -274,14 +472,16 @@ const IChingApp: React.FC = () => {
               </div>
 
               {result.transformedHexagram ? (
-                <HexagramDisplay 
-                  title={t.transformedHexagram} 
-                  hexagram={result.transformedHexagram} 
+                <HexagramDisplay
+                  title={t.transformedHexagram}
+                  hexagram={result.transformedHexagram}
                   language={language}
                 />
               ) : (
                 <div className="p-4 bg-[#1e1e1e] rounded-lg">
-                  <h3 className="text-sm text-[#3a5f6e] mb-1">{t.transformedHexagram}</h3>
+                  <h3 className="text-sm text-[#3a5f6e] mb-1">
+                    {t.transformedHexagram}
+                  </h3>
                   <p className="text-[#888]">{t.noTransformation}</p>
                 </div>
               )}
