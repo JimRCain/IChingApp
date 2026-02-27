@@ -2,7 +2,7 @@ export const hexagram10 = {
   number: 10,
   name: "Treading (履 - Lǚ)",
   nameCn: "履",
-  binary: "111011",
+  binary: "111010",
   heart: "Stepping on the tail of a tiger. The danger is real—the tiger could turn, could bite, could end you. But it does not. Not because you are lucky, but because you tread correctly. Your step is light, your intention pure, your awareness complete. The tiger feels no threat, so it does not react. This is treading: walking through a dangerous world with such presence, such alignment, that even the tiger lets you pass. The path is narrow, but it is there. And you are walking it.",
   ancient: {
     chinese: "履虎尾，不咥人，亨。",

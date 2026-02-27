@@ -2,7 +2,7 @@ export const hexagram52 = {
   number: 52,
   name: "Keeping Still (艮 - Gèn)",
   nameCn: "艮",
-  binary: "100100",
+  binary: "001001",
   heart: "Mountain over mountain. Stillness upon stillness. The mountain does not move; it simply rests. Keeping Still is the art of stopping—not as avoidance, but as completion. When the spine is still, the body rests. When the mind is still, the world settles. The sage knows when to stop: at the right moment, in the right place, with no regret.",
   ancient: {
     chinese: "艮其背，不獲其身，行其庭，不見其人。无咎。",
