@@ -2,7 +2,7 @@ export const hexagram57 = {
   number: 57,
   name: "The Gentle (巽 - Xùn)",
   nameCn: "巽",
-  binary: "110110",
+  binary: "011011",
   heart: "Wind over wind. Gentle, penetrating, persistent. The Gentle is the power of influence without force, of persuasion without argument. Wind does not break the tree; it bends it over time. It does not command the clouds; it moves them. In human life, the gentle approach is often the most powerful: a soft word turns away wrath, a steady presence changes hearts. The wise one does not push; they permeate.",
   ancient: {
     chinese: "巽。小亨，利有攸往，利見大人。",

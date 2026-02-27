@@ -2,7 +2,7 @@ export const hexagram58 = {
   number: 58,
   name: "The Joyous (兌 - Duì)",
   nameCn: "兌",
-  binary: "110110",
+  binary: "011011",
   heart: "Lake over lake. Water reflecting water, joy upon joy. The Joyous is the power of authentic happiness—not the fleeting pleasure of acquisition, but the deep joy of connection, of presence, of being fully alive. True joy is contagious; it spreads like ripples on a lake. The wise one does not seek joy; they become a source of it, and others are refreshed.",
   ancient: {
     chinese: "兌。亨，利貞。",

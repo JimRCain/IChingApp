@@ -2,7 +2,7 @@ export const hexagram59 = {
   number: 59,
   name: "Dispersion (渙 - Huàn)",
   nameCn: "渙",
-  binary: "010110",
+  binary: "010011",
   heart: "Wind over water. Wind scatters the clouds, disperses the mist. Dispersion is the breaking up of what has become stagnant—rigid thoughts, frozen feelings, blocked energy. Not destruction, but release. The wind does not destroy the water; it moves it, clears it, refreshes it. In human life, dispersion comes when we need to let go, to forgive, to release what no longer serves. The wise one welcomes the wind that clears the heart.",
   ancient: {
     chinese: "渙。亨。王假有廟，利涉大川，利貞。",

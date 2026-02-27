@@ -2,7 +2,7 @@ export const hexagram53 = {
   number: 53,
   name: "Development (漸 - Jiàn)",
   nameCn: "漸",
-  binary: "100100",
+  binary: "001011",
   heart: "Wind over mountain. The wind moves slowly, shaping the mountain over eons. Development is gradual progress—not a leap, but a steady ascent. The wild goose flies step by step, from shore to shore, never rushing, never stopping. In human life, true growth is like this: patient, persistent, inevitable. Do not force; just continue.",
   ancient: {
     chinese: "漸。女歸吉，利貞。",
