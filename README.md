@@ -1,1 +1,1 @@
-# Welcome to your Dyad app
+# Vibe coded with Dyad, I Ching translation and commentary by Deepseek.
