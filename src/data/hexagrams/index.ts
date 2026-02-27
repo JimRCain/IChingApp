@@ -30,6 +30,22 @@ import { hexagram29 } from "./hexagram-29";
 import { hexagram30 } from "./hexagram-30";
 import { hexagram31 } from "./hexagram-31";
 import { hexagram32 } from "./hexagram-32";
+import { hexagram33 } from "./hexagram-33";
+import { hexagram34 } from "./hexagram-34";
+import { hexagram35 } from "./hexagram-35";
+import { hexagram36 } from "./hexagram-36";
+import { hexagram37 } from "./hexagram-37";
+import { hexagram38 } from "./hexagram-38";
+import { hexagram39 } from "./hexagram-39";
+import { hexagram40 } from "./hexagram-40";
+import { hexagram41 } from "./hexagram-41";
+import { hexagram42 } from "./hexagram-42";
+import { hexagram43 } from "./hexagram-43";
+import { hexagram44 } from "./hexagram-44";
+import { hexagram45 } from "./hexagram-45";
+import { hexagram46 } from "./hexagram-46";
+import { hexagram47 } from "./hexagram-47";
+import { hexagram48 } from "./hexagram-48";
 
 export {
   hexagram1,
@@ -64,6 +80,22 @@ export {
   hexagram30,
   hexagram31,
   hexagram32,
+  hexagram33,
+  hexagram34,
+  hexagram35,
+  hexagram36,
+  hexagram37,
+  hexagram38,
+  hexagram39,
+  hexagram40,
+  hexagram41,
+  hexagram42,
+  hexagram43,
+  hexagram44,
+  hexagram45,
+  hexagram46,
+  hexagram47,
+  hexagram48,
 };
 
 export const hexagrams = [
@@ -99,6 +131,22 @@ export const hexagrams = [
   hexagram30,
   hexagram31,
   hexagram32,
+  hexagram33,
+  hexagram34,
+  hexagram35,
+  hexagram36,
+  hexagram37,
+  hexagram38,
+  hexagram39,
+  hexagram40,
+  hexagram41,
+  hexagram42,
+  hexagram43,
+  hexagram44,
+  hexagram45,
+  hexagram46,
+  hexagram47,
+  hexagram48,
 ];
 
 export const getHexagramByNumber = (number: number) => {
