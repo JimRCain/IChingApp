@@ -369,6 +369,41 @@ const IChingApp: React.FC = () => {
     setQuestion("");
   }, []);
 
+  // Helper to get line display symbols
+  const getLineSymbols = (lineResult: LineResult) => {
+    const yangLine = "━━━";
+    const yinLine = "━ ━";
+    const arrow = "→";
+    
+    if (lineResult.isChanging) {
+      if (lineResult.value === 6) {
+        // Old Yin changing to Yang
+        return (
+          <span className="flex items-center gap-1 text-[#3a5f6e]">
+            <span>{yinLine}</span>
+            <span className="text-sm">{arrow}</span>
+            <span>{yangLine}</span>
+          </span>
+        );
+      } else {
+        // Old Yang changing to Yin
+        return (
+          <span className="flex items-center gap-1 text-[#3a5f6e]">
+            <span>{yangLine}</span>
+            <span className="text-sm">{arrow}</span>
+            <span>{yinLine}</span>
+          </span>
+        );
+      }
+    } else {
+      return (
+        <span className="text-[#888]">
+          {lineResult.value === 7 || lineResult.value === 9 ? yangLine : yinLine}
+        </span>
+      );
+    }
+  };
+
   return (
     <div className="min-h-screen bg-[#121212] text-[#e0e0e0]">
       <div className="max-w-[900px] mx-auto px-4 py-8">
@@ -529,6 +564,9 @@ const IChingApp: React.FC = () => {
                                   {t.advice}
                                 </span>
                               )}
+                            </div>
+                            <div className="flex-1 flex justify-center">
+                              {lineResult && getLineSymbols(lineResult)}
                             </div>
                             <span className="text-sm text-[#888]">
                               {isExpanded ? t.hideLine : t.viewLine}
