@@ -11,12 +11,12 @@ export const hexagram48 = {
   judgment: "The well is the constant in the midst of change. Towns rise and fall; the well remains. It neither loses nor gains by those who draw from it. Its water is always there, always the same. In human life, the well is your deepest character, your essential virtue. It does not change with circumstance; it does not increase with praise or decrease with blame. They come and go, drawing from you—some take, some leave, some break the jug. If the rope does not reach—if you cannot access your own depth—or if the jug breaks—if your vessel is flawed—then misfortune follows. But the well itself is not harmed. It waits, patient, full.",
   image: "Water over wood. The noble one urges the people to work and encourages them in their mutual tasks. Water over wood: wood lowers the bucket, water rises. The noble one learns: urge the people to work—not by commanding, but by providing the means. Encourage them in mutual tasks—the drawing of water is communal; the well serves all. The well does not work; it simply is. The people work, using its gift. The noble one, like the well, provides the resource and encourages the community to use it well.",
   lines: [
-    "The well is muddy. No one drinks. An old well, no birds. Neglect. The well has not been tended; it is muddy, foul. No one drinks; even birds avoid it. This is the condition of a character untended, a virtue uncleaned. The line does not despair; it simply notes the state. It can be cleaned.",
-    "The well leaks down to the fish. The jug is broken and leaks. The well is not the problem; the vessel is. The water is there, but the means of drawing it are flawed. In human terms, you have the virtue, but your expression of it is broken. Fix the vessel; the water is still good.",
-    "The well is cleaned but no one drinks. This is my heart's sorrow. For the water could be drawn. If the king were clear-minded, good fortune would descend. The well is clean, ready—but no one comes. This is the sorrow of unused potential. The water could be drawn, could bless, but the people do not come. If the king—the leader, the one with vision—were clear-minded, he would see the well and draw from it, and good fortune would descend on all. The line mourns the missed opportunity.",
-    "The well is being lined. No blame. Lining the well—repairing, reinforcing—is work that prepares for future use. No blame because it is not yet drawing, but it is becoming ready. In times of preparation, do not expect to give; tend to the structure.",
-    "The well is clear, cold spring water. Drink. The well at its best: clear, cold, pure. The water is ready; now drink. Not just for yourself, but for all who come. The spring does not hoard; it flows. So too, when your character is clear, let others drink.",
-    "The well is drawn from without obstruction. It is dependable. Supreme good fortune. The final line: the well functions perfectly. The rope reaches, the jug holds, the water rises. No obstruction, complete dependability. Supreme good fortune because the well fulfills its nature. You have become a source from which all can draw, and you are never depleted."
+    "The well is muddy. No one drinks. An old well, no birds. Neglect.",
+    "The well leaks down to the fish. The jug is broken and leaks.",
+    "The well is cleaned but no one drinks. This is my heart's sorrow. For the water could be drawn. If the king were clear-minded, good fortune would descend.",
+    "The well is being lined. No blame.",
+    "The well is clear, cold spring water. Drink.",
+    "The well is drawn from without obstruction. It is dependable. Supreme good fortune."
   ],
   trigrams: {
     lower: {
@@ -27,7 +27,7 @@ export const hexagram48 = {
       name: "Kǎn (Water)",
       nature: "Abysmal, dangerous"
     },
-    description: "Wind below, water above. Wood (wind) descends into water, drawing it up. This is the well: the means of accessing depth. The wind is the bucket, the rope; the water is the source. Together, they make life possible. The well is the meeting of effort and gift, of human reaching and divine providing."
+    description: "Wind below, water above. Wood (wind) descends into water, drawing it up. This is the well: the means of accessing depth."
   },
-  taoist_reflection: "The Tao Te Ching says: 'The supreme good is like water. It benefits all things and does not contend. It stays in lowly places that others despise. Thus it is near the Tao.' Hexagram 48 is water in the well—still, deep, available. The well does not contend; it simply offers. It does not seek; it waits. This is the nature of true virtue: to be so completely what you are that others can draw from you without diminishing you. The well is never emptied because it is connected to the source. So too, the sage, rooted in the Tao, gives endlessly and is never less."
+  taoist_reflection: "The Tao Te Ching says: 'The supreme good is like water. It benefits all things and does not contend. It stays in lowly places that others despise. Thus it is near the Tao.' Hexagram 48 is water in the well—still, deep, available. The well does not contend; it simply offers. It does not seek; it waits. This is the nature of true virtue: to be so completely what you are that others can draw from you without diminishing you."
 };

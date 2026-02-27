@@ -11,12 +11,12 @@ export const hexagram47 = {
   judgment: "Oppression seems the opposite of success, yet the hexagram says: Oppression has success. How? Through perseverance, through inner alignment. The great person—the one who has cultivated virtue—brings good fortune even in oppression, not by changing circumstances, but by changing themselves. No blame attaches because they did not cause their plight. But words are not believed; in oppression, explanations fail, pleas go unheard. The only path is silent endurance, inner work, and trust that the water will eventually rise again.",
   image: "Lake over water. The noble one stakes his life on following his purpose. Lake over water: the lake is empty, the water trapped. The noble one learns: in oppression, the only thing left is purpose. Stake your life on it—not recklessly, but with the deep commitment that says: even if I lose everything, I will not lose this. Purpose becomes the ground when all other ground is gone.",
   lines: [
-    "He sits oppressed under a bare tree. He wanders into a dark valley. For three years he sees nothing. The depth of oppression: sitting under a bare tree—no shade, no shelter. Wandering in a dark valley—no light, no direction. For three years, a full cycle, nothing changes. This is not punishment; it is simply the condition. The line does not offer hope; it witnesses.",
-    "He is oppressed while at meat and drink. The man with the scarlet knee bands is just coming. It furthers to offer sacrifice. To set forth brings misfortune. No blame. Even in basic needs—meat and drink—oppression presses. But the man with the scarlet knee bands—the official, the helper—is coming. Offer sacrifice—stay connected to what is holy. To set forth now, to act, brings misfortune. Wait. No blame.",
-    "He is oppressed by stone. He leans on thorns. He enters his house and does not see his wife. Misfortune. Stone—unyielding, impassable. Thorns—prickly, painful. His own house, his refuge, empty of the one he loves. Misfortune piled on misfortune. The line is stark, without comfort. Some oppression is total.",
-    "He comes slowly, oppressed in a golden carriage. Humiliation, but the end is reached. The golden carriage—luxury, status—yet oppression still. Humiliation because wealth did not protect. But the end is reached; the oppression passes. Even in humiliation, the end comes.",
-    "His nose and feet are cut off. Oppression at the hands of the man with the scarlet knee bands. Joy comes slowly. It furthers to offer sacrifice and libation. Mutilation—loss of parts, loss of function. Oppression at the hands of those who should help. Yet joy comes slowly—not suddenly, but gradually, like dawn. Offer sacrifice and libation—stay connected to the source. Joy will come.",
-    "He is oppressed by creeping vines. He moves uncertainly. Regret. If he thinks of his mistakes, he has no regret. To move now brings good fortune. The final line: vines entangle, movement is uncertain. Regret for the entanglement. But if he thinks of his mistakes—if he learns what the oppression taught—then no regret. To move now brings good fortune because the lesson is learned. Oppression has served its purpose."
+    "He sits oppressed under a bare tree. He wanders into a dark valley. For three years he sees nothing.",
+    "He is oppressed while at meat and drink. The man with the scarlet knee bands is just coming. It furthers to offer sacrifice. To set forth brings misfortune. No blame.",
+    "He is oppressed by stone. He leans on thorns. He enters his house and does not see his wife. Misfortune.",
+    "He comes slowly, oppressed in a golden carriage. Humiliation, but the end is reached.",
+    "His nose and feet are cut off. Oppression at the hands of the man with the scarlet knee bands. Joy comes slowly. It furthers to offer sacrifice and libation.",
+    "He is oppressed by creeping vines. He moves uncertainly. Regret. If he thinks of his mistakes, he has no regret. To move now brings good fortune."
   ],
   trigrams: {
     lower: {
@@ -27,7 +27,7 @@ export const hexagram47 = {
       name: "Duì (Lake)",
       nature: "Joyful, reflecting"
     },
-    description: "Water below, lake above. The lake is empty; the water is trapped below. This is oppression: the resources are present but inaccessible. The water is there, but it cannot rise to fill the lake. In oppression, what you need is near but unreachable. Wait; the blockage will not last forever."
+    description: "Water below, lake above. The lake is empty; the water is trapped below. This is oppression: the resources are present but inaccessible."
   },
   taoist_reflection: "The Tao Te Ching says: 'To know the masculine and keep to the feminine is to be the valley of the world.' Hexagram 47 is the valley when it is dry, the feminine when it is empty. Oppression is the condition of being a valley with no water, a well with no source. Yet the valley remains valley; its nature does not change. In oppression, keep to your nature. Be the valley, even dry. The water will return."
 };
