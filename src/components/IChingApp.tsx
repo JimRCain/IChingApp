@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, useCallback } from "react";
+import React, { useState, useCallback, useEffect } from "react";
 import { LanguageToggle } from "./LanguageToggle";
 import { HexagramDisplay } from "./HexagramDisplay";
 import { getHexagramByBinary } from "@/data/hexagrams";
@@ -54,6 +54,8 @@ const translations = {
     binaryLabel: "Binary",
     advice: "Advice",
     allLinesSpecial: "Special: All Lines Changing",
+    viewLine: "View Line",
+    hideLine: "Hide Line",
   },
   zh: {
     title: "易经",
@@ -77,6 +79,8 @@ const translations = {
     binaryLabel: "二进制",
     advice: "建议",
     allLinesSpecial: "特例：六爻皆变",
+    viewLine: "查看",
+    hideLine: "隐藏",
   },
 };
 
@@ -241,6 +245,7 @@ const IChingApp: React.FC = () => {
   const [isComplete, setIsComplete] = useState(false);
   const [readyToReveal, setReadyToReveal] = useState(false);
   const [result, setResult] = useState<ReadingResult | null>(null);
+  const [expandedLines, setExpandedLines] = useState<number[]>([]);
 
   const t = translations[language];
 
@@ -276,6 +281,27 @@ const IChingApp: React.FC = () => {
 
     return { value, isChanging, display };
   }, [language]);
+
+  // Auto-expand the correct changing lines when result is ready
+  useEffect(() => {
+    if (result && result.changingLines.length > 0) {
+      const lineNumbers = result.changingLines.map((cl) => cl.lineNum);
+      setExpandedLines(lineNumbers);
+    } else if (result && result.allLinesSpecial) {
+      // For special case, expand all lines
+      setExpandedLines([1, 2, 3, 4, 5, 6]);
+    } else {
+      setExpandedLines([]);
+    }
+  }, [result]);
+
+  const toggleLine = useCallback((lineNum: number) => {
+    setExpandedLines((prev) =>
+      prev.includes(lineNum)
+        ? prev.filter((n) => n !== lineNum)
+        : [...prev, lineNum]
+    );
+  }, []);
 
   const handleThrow = useCallback(() => {
     if (lines.length < 6) {
@@ -339,6 +365,7 @@ const IChingApp: React.FC = () => {
     setIsComplete(false);
     setReadyToReveal(false);
     setResult(null);
+    setExpandedLines([]);
     setQuestion("");
   }, []);
 
@@ -442,9 +469,10 @@ const IChingApp: React.FC = () => {
               )}
 
               <div className="p-4 bg-[#1e1e1e] rounded-lg">
-                <h3 className="text-sm text-[#3a5f6e] mb-2">
+                <h3 className="text-sm text-[#3a5f6e] mb-3">
                   {t.changingLines} ({result.changingLineCount})
                 </h3>
+                
                 {result.allLinesSpecial ? (
                   <div className="space-y-2">
                     <p className="font-serif text-[#3a5f6e] font-medium">
@@ -454,23 +482,68 @@ const IChingApp: React.FC = () => {
                       {result.allLinesSpecial}
                     </p>
                   </div>
-                ) : result.changingLines.length > 0 ? (
-                  <div className="space-y-4">
-                    {result.changingLines.map((lineInfo) => (
-                      <div key={lineInfo.lineNum} className="space-y-2">
-                        <div className="flex items-center gap-2">
-                          <p className="font-serif text-[#3a5f6e] font-medium">
-                            {t.line} {lineInfo.lineNum}
-                          </p>
-                          <span className="text-xs text-[#888] bg-[#2a2a2a] px-2 py-1 rounded">
-                            {lineInfo.rule}
-                          </span>
+                ) : result.primaryHexagram ? (
+                  <div className="space-y-3">
+                    {/* Display all 6 lines as interactive buttons */}
+                    {result.primaryHexagram.lines.map((lineText, index) => {
+                      const lineNum = index + 1;
+                      const lineResult = result.lines[index];
+                      const isExpanded = expandedLines.includes(lineNum);
+                      const isChanging = lineResult?.isChanging;
+                      const isRecommended = result.changingLines.some(
+                        (cl) => cl.lineNum === lineNum
+                      );
+
+                      return (
+                        <div
+                          key={lineNum}
+                          className={`border rounded-lg overflow-hidden ${
+                            isChanging
+                              ? "border-[#3a5f6e]"
+                              : "border-[#2a2a2a]"
+                          }`}
+                        >
+                          <button
+                            onClick={() => toggleLine(lineNum)}
+                            className={`w-full flex items-center justify-between p-3 transition-colors ${
+                              isExpanded
+                                ? "bg-[#2a2a2a]"
+                                : "bg-[#1e1e1e] hover:bg-[#252525]"
+                            }`}
+                          >
+                            <div className="flex items-center gap-3">
+                              <span
+                                className={`font-serif ${
+                                  isChanging ? "font-bold text-[#3a5f6e]" : ""
+                                }`}
+                              >
+                                {t.line} {lineNum}
+                              </span>
+                              {isChanging && (
+                                <span className="px-2 py-0.5 bg-[#3a5f6e] text-white text-xs rounded font-medium">
+                                  {t.changing}
+                                </span>
+                              )}
+                              {isRecommended && !isChanging && (
+                                <span className="px-2 py-0.5 bg-[#2a4a56] text-white text-xs rounded font-medium">
+                                  {t.advice}
+                                </span>
+                              )}
+                            </div>
+                            <span className="text-sm text-[#888]">
+                              {isExpanded ? t.hideLine : t.viewLine}
+                            </span>
+                          </button>
+                          {isExpanded && (
+                            <div className="p-4 bg-[#1a1a1a] border-t border-[#2a2a2a]">
+                              <p className="font-serif text-[#e0e0e0] italic">
+                                {lineText}
+                              </p>
+                            </div>
+                          )}
                         </div>
-                        <p className="font-serif text-[#e0e0e0] italic">
-                          {lineInfo.text}
-                        </p>
-                      </div>
-                    ))}
+                      );
+                    })}
                   </div>
                 ) : (
                   <p className="text-[#888]">{t.noChangingLines}</p>
