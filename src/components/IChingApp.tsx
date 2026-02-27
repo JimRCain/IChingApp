@@ -14,11 +14,16 @@ interface LineResult {
   display: string;
 }
 
+interface ChangingLineInfo {
+  lineNum: number;
+  text: string;
+}
+
 interface ReadingResult {
   primaryHexagram: Hexagram | null;
   transformedHexagram: Hexagram | null;
   lines: LineResult[];
-  changingLines: number[];
+  changingLines: ChangingLineInfo[];
   primaryBinary: string;
   transformedBinary: string;
 }
@@ -128,19 +133,23 @@ const IChingApp: React.FC = () => {
         return line.value === 7 || line.value === 9 ? "1" : "0";
       }).join("");
 
-      const changingLines = lines
-        .map((line, index) => {
-          if (line.value === 6 || line.value === 9) {
-            return index + 1;
-          }
-          return -1;
-        })
-        .filter(lineNum => lineNum !== -1);
-
       const primaryHexagram = getHexagramByBinary(primaryBinary);
       const transformedHexagram = primaryBinary !== transformedBinary 
         ? getHexagramByBinary(transformedBinary) 
         : null;
+
+      // Extract changing line texts from the primary hexagram
+      const changingLines: ChangingLineInfo[] = lines
+        .map((line, index) => {
+          if ((line.value === 6 || line.value === 9) && primaryHexagram) {
+            return {
+              lineNum: index + 1,
+              text: primaryHexagram.lines[index] || "",
+            };
+          }
+          return null;
+        })
+        .filter((lineInfo): lineInfo is ChangingLineInfo => lineInfo !== null);
 
       setResult({
         primaryHexagram: primaryHexagram || null,
@@ -247,11 +256,16 @@ const IChingApp: React.FC = () => {
               <div className="p-4 bg-[#1e1e1e] rounded-lg">
                 <h3 className="text-sm text-[#3a5f6e] mb-2">{t.changingLines}</h3>
                 {result.changingLines.length > 0 ? (
-                  <div className="space-y-2">
-                    {result.changingLines.map((lineNum) => (
-                      <p key={lineNum} className="font-serif text-[#e0e0e0]">
-                        {t.line} {lineNum}
-                      </p>
+                  <div className="space-y-4">
+                    {result.changingLines.map((lineInfo) => (
+                      <div key={lineInfo.lineNum} className="space-y-2">
+                        <p className="font-serif text-[#3a5f6e] font-medium">
+                          {t.line} {lineInfo.lineNum}
+                        </p>
+                        <p className="font-serif text-[#e0e0e0] italic">
+                          {lineInfo.text}
+                        </p>
+                      </div>
                     ))}
                   </div>
                 ) : (
