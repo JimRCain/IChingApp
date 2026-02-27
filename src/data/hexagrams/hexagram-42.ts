@@ -2,7 +2,7 @@ export const hexagram42 = {
   number: 42,
   name: "Increase (益 - Yì)",
   nameCn: "益",
-  binary: "100011",
+  binary: "110001",
   heart: "Wind over thunder. Thunder stirs below, wind spreads above—movement and influence together, multiplying effect. Increase is not mere addition; it is amplification. What is good grows, what is true spreads. Not through force, but through the natural synergy of aligned forces. In times of increase, the wise one does not hoard; they let the wind carry the thunder's sound so that all may hear.",
   ancient: {
     chinese: "益。利有攸往，利涉大川。",

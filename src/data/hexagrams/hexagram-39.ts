@@ -2,7 +2,7 @@ export const hexagram39 = {
   number: 39,
   name: "Obstruction (蹇 - Jiǎn)",
   nameCn: "蹇",
-  binary: "010001",
+  binary: "010100",
   heart: "Water over mountain. The mountain rises, steep and unyielding. Water flows, seeking the lowest ground. Before the mountain, water must pause, must find a way around, must wait. Obstruction is this: the natural flow blocked, the way ahead closed. Not a punishment, not a failure—simply a fact of the landscape. In obstruction, the wise one does not rage against the mountain; they stop, look, and find another way.",
   ancient: {
     chinese: "蹇。利西南，不利東北。利見大人，貞吉。",

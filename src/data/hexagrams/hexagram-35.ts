@@ -2,7 +2,7 @@ export const hexagram35 = {
   number: 35,
   name: "Progress (晋 - Jìn)",
   nameCn: "晋",
-  binary: "000101",
+  binary: "101000",
   heart: "Fire over earth. The sun rising over the great plain, illuminating everything, warming everything. Progress is this: not striving, not forcing, but the natural advance of light. The sun does not struggle to rise; it simply rises, and the world is lit. Progress in the human realm is the same: when you are clear, bright, and sincere, you advance without effort. The light itself opens the way.",
   ancient: {
     chinese: "晋。康侯用錫馬蕃庶，晝日三接。",

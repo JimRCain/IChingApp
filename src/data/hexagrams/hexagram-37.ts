@@ -2,7 +2,7 @@ export const hexagram37 = {
   number: 37,
   name: "The Family (家人 - Jiā Rén)",
   nameCn: "家人",
-  binary: "101011",
+  binary: "110101",
   heart: "Wind over fire. Wind fans the flame, making it brighter, steadier. Fire warms the wind, giving it direction. This is the family: mutual influence, mutual support, each strengthening the other. Not through force, but through the natural interaction of their natures. The family is the first society, the original school of virtue. In it, we learn to be ourselves in relation to others, to give and receive, to hold and let go.",
   ancient: {
     chinese: "家人。利女貞。",

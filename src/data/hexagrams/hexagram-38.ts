@@ -2,7 +2,7 @@ export const hexagram38 = {
   number: 38,
   name: "Opposition (睽 - Kuí)",
   nameCn: "睽",
-  binary: "101010",
+  binary: "101011",
   heart: "Fire over lake. Fire rises, lake sinks. They move apart, each following its nature, yet they are part of the same landscape. Opposition is not enmity; it is the natural divergence of things that are different. The fire and the lake cannot be the same, but they can coexist, each enriching the whole in its own way. In human life, opposition arises when two people, two groups, two truths seem irreconcilable. But opposition, rightly understood, is not the end of relationship; it is the beginning of a larger understanding.",
   ancient: {
     chinese: "睽。小事吉。",
