@@ -379,25 +379,25 @@ const IChingApp: React.FC = () => {
       if (lineResult.value === 6) {
         // Old Yin changing to Yang
         return (
-          <span className="flex items-center gap-1 text-[#3a5f6e]">
+          <span className="flex items-center gap-2 text-[#5fa3c0] font-bold">
             <span>{yinLine}</span>
-            <span className="text-sm">{arrow}</span>
+            <span className="text-base">{arrow}</span>
             <span>{yangLine}</span>
           </span>
         );
       } else {
         // Old Yang changing to Yin
         return (
-          <span className="flex items-center gap-1 text-[#3a5f6e]">
+          <span className="flex items-center gap-2 text-[#5fa3c0] font-bold">
             <span>{yangLine}</span>
-            <span className="text-sm">{arrow}</span>
+            <span className="text-base">{arrow}</span>
             <span>{yinLine}</span>
           </span>
         );
       }
     } else {
       return (
-        <span className="text-[#888]">
+        <span className="text-[#a0a0a0] font-medium">
           {lineResult.value === 7 || lineResult.value === 9 ? yangLine : yinLine}
         </span>
       );
@@ -546,7 +546,7 @@ const IChingApp: React.FC = () => {
                                 : "bg-[#1e1e1e] hover:bg-[#252525]"
                             }`}
                           >
-                            <div className="flex items-center gap-3">
+                            <div className="flex items-center gap-3 min-w-[120px]">
                               <span
                                 className={`font-serif ${
                                   isChanging ? "font-bold text-[#3a5f6e]" : ""
@@ -565,10 +565,10 @@ const IChingApp: React.FC = () => {
                                 </span>
                               )}
                             </div>
-                            <div className="flex-1 flex justify-center">
+                            <div className="flex-1 flex justify-center min-w-[140px]">
                               {lineResult && getLineSymbols(lineResult)}
                             </div>
-                            <span className="text-sm text-[#888]">
+                            <span className="text-sm text-[#888] min-w-[60px] text-right">
                               {isExpanded ? t.hideLine : t.viewLine}
                             </span>
                           </button>
