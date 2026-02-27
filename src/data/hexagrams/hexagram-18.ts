@@ -2,7 +2,7 @@ export const hexagram18 = {
   number: 18,
   name: "Work on What Has Been Spoiled (蠱 - Gǔ)",
   nameCn: "蠱",
-  binary: "110001",
+  binary: "100110",
   heart: "Wind below, mountain above. The wind blows against the mountain, but the mountain does not move. Instead, the wind works on what has been spoiled—rotting leaves, dead branches, the decay that accumulates when things are left unattended. This is not destruction; it is restoration. The wind does not blame the mountain for the decay; it simply works, steadily, clearing what needs to be cleared. Work on what has been spoiled is not punishment; it is care.",
   ancient: {
     chinese: "蠱。元亨，利涉大川。先甲三日，後甲三日。",

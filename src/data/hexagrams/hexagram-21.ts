@@ -2,7 +2,7 @@ export const hexagram21 = {
   number: 21,
   name: "Biting Through (噬嗑 - Shì Kè)",
   nameCn: "噬嗑",
-  binary: "100101",
+  binary: "101001",
   heart: "Thunder above, fire below. The thunder crashes; the fire burns. Between them, something hard must be bitten through. This is not gentle work. There is an obstacle—a lie, a betrayal, a corruption—that cannot be talked around, cannot be wished away. It must be bitten through. The teeth meet the bone. There is pain. There is resistance. But there is also the possibility of breakthrough. Biting through is the justice that restores.",
   ancient: {
     chinese: "噬嗑。亨。利用獄。",

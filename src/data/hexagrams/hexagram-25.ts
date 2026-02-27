@@ -2,7 +2,7 @@ export const hexagram25 = {
   number: 25,
   name: "Innocence (The Unexpected) (无妄 - Wú Wàng)",
   nameCn: "无妄",
-  binary: "100111",
+  binary: "111001",
   heart: "Heaven above, thunder below. The thunder rolls under heaven—spontaneous, unexpected, without calculation. This is innocence: not the ignorance of the naive, but the clarity of the uncalculated. The unexpected comes not from planning, but from alignment. When you act without ulterior motive, without scheme, without the weight of expectation, you are innocent. And in that innocence, heaven moves through you.",
   ancient: {
     chinese: "无妄。元亨利貞。其匪正有眚，不利有攸往。",

@@ -2,7 +2,7 @@ export const hexagram13 = {
   number: 13,
   name: "Fellowship with Others (同人 - Tóng Rén)",
   nameCn: "同人",
-  binary: "101111",
+  binary: "111101",
   heart: "Heaven above, fire below. The flame rises to meet the sky. This is fellowship: not the small circle of friends, but the great community of those who share the light. Fire illuminates; heaven contains. Together, they create a space where all who seek the light can gather.",
   ancient: {
     chinese: "同人。同人于野，亨。利涉大川，利君子貞。",

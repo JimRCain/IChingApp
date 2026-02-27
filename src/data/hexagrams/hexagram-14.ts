@@ -2,7 +2,7 @@ export const hexagram14 = {
   number: 14,
   name: "Possession in Great Measure (大有 - Dà Yǒu)",
   nameCn: "大有",
-  binary: "111101",
+  binary: "101111",
   heart: "Fire above heaven. The sun in the sky, shining on all things. This is possession in great measure: not hoarding, but having enough to share. The sun does not keep its light; it gives it freely. In the same way, true possession is measured not by what you hold, but by what you can give.",
   ancient: {
     chinese: "大有。元亨。",
