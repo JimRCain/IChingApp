@@ -3,20 +3,20 @@ export const hexagram50 = {
   name: "The Cauldron (鼎 - Dǐng)",
   nameCn: "鼎",
   binary: "101110",
-  heart: "Fire over wood. The cauldron sits on wood, fire burns beneath it, transforming raw ingredients into nourishment. The Cauldron is the vessel of transformation, the sacred container where the old is cooked into the new. After revolution comes the cauldron: the work of culture, of refinement, of making the raw cooked. The cauldron is not just a pot; it is the symbol of civilization itself, the place where heaven and earth meet to create something that sustains life.",
+  heart: "Fire over wood. The flame licks the cauldron, heating what is within. The cauldron is the vessel of transformation—raw becomes cooked, separate becomes one, nourishing. It is not the food itself, but the means by which food becomes gift. In human life, the cauldron is culture, tradition, the vessel that transforms raw experience into wisdom, crude energy into refined virtue. It holds, it cooks, it offers.",
   ancient: {
     chinese: "鼎。元吉，亨。",
     rendering: "The Cauldron. Supreme good fortune. Success."
   },
-  judgment: "The Cauldron brings supreme good fortune and success. After the revolution has cleared away the old, the cauldron transforms what remains into nourishment for the new order. This is the work of culture: to take the raw materials of life and cook them into wisdom, into art, into community. The cauldron is stable, grounded, sacred. It does not rush; it simmers. Supreme good fortune comes to those who tend the cauldron with care, who understand that transformation takes time.",
-  image: "Fire over wood. The image of the Cauldron. The noble one consolidates their fate by making their position correct. Fire over wood: the flame cooks what is in the cauldron. The noble one learns: to consolidate fate, make your position correct. Not through force, but through alignment. The cauldron must be stable, level, or the contents spill. So too, you must be centered, balanced, or your life spills. Make your position correct, and fate consolidates around you.",
+  judgment: "The cauldron is the sacred vessel, the means by which raw material becomes nourishment. Supreme good fortune attends those who tend it rightly. Success comes not from the ingredients alone, but from the vessel that holds them and the fire that transforms them. In your life, what is the cauldron? It may be your practice, your community, your tradition—whatever holds you and transforms you. Tend it well. Keep it clean. Feed the fire, but do not let it burn too hot. The cauldron is patient; it waits for the right cooking. So too, you must wait for the transformation to complete before offering what is within.",
+  image: "Fire over wood. The noble one consolidates their destiny by making their position correct. Fire over wood: the wood feeds the fire; the fire transforms the wood. The noble one learns: consolidate your destiny—not by grasping, but by making your position correct. Be in the right place, doing the right thing, with the right attitude. Then destiny flows to you as naturally as fire rises from wood. The position correct, the vessel stable, the transformation proceeds.",
   lines: [
-    "A ting with legs upturned. Furthers removal of stagnating stuff. One takes a concubine for the sake of her son. No blame.",
-    "There is food in the ting. My comrades are envious, but they cannot harm me. Good fortune.",
-    "The handle of the ting is altered. One is impeded in his way of life. The fat of the pheasant is not eaten. Once rain falls, remorse is spent. Good fortune comes in the end.",
-    "The legs of the ting are broken. The prince's meal is spilled. His person is soiled. Misfortune.",
-    "The ting has yellow handles, golden carrying rings. Perseverance furthers.",
-    "The ting has rings of jade. Great good fortune. Nothing that would not act to further."
+    "The cauldron is overturned, its feet up. It furthers to remove what is stale. Taking a concubine for the sake of her son brings no blame. Sometimes the cauldron must be overturned to clean it. The stale, the old, must be removed. Taking a concubine—an unconventional means—for the sake of a son, for the future, is not blameworthy. The overturning is not destruction; it is preparation.",
+    "The cauldron has food. My comrades are envious. But they cannot harm me. Good fortune. The cauldron is full, but envy arises. Those who see your nourishment may wish they had it. But they cannot harm you because your fullness is not at their expense. Good fortune because you are secure in your abundance.",
+    "The cauldron's ears are worn out. The way is blocked. The fat of the pheasant is not eaten. Only when rain falls will regret disappear. Good fortune in the end. The ears—the means of lifting the cauldron—are worn; the way is blocked. The nourishment cannot be accessed. Only when rain falls—when heaven's blessing comes—will regret disappear. But in the end, good fortune. The blockage is temporary.",
+    "The cauldron's feet are broken. The prince's meal is spilled. The servant is drenched. Misfortune. Catastrophe: the vessel breaks, the food is lost, the servant is soiled. Misfortune because the transformation was interrupted, the gift wasted. But the line does not end in despair; it simply records. From such failure, one learns to tend the vessel better.",
+    "The cauldron has yellow ears and golden rings. Perseverance brings good fortune. Yellow—center, earth. Golden—value, stability. The vessel is well made, well tended. Perseverance in this care brings good fortune. The cauldron is ready for any offering.",
+    "The cauldron has rings of jade. Great good fortune. Nothing that does not further. Jade—the most precious, the most sacred. The cauldron adorned with jade is the vessel at its highest. Great good fortune because it is honored and capable. Nothing that does not further—every use of this vessel brings blessing. The transformation it enables is complete, holy, and eternal."
   ],
   trigrams: {
     lower: {
@@ -27,7 +27,7 @@ export const hexagram50 = {
       name: "Lí (Fire)",
       nature: "Clinging, bright"
     },
-    description: "Wind below, fire above. Wind feeds fire, fire cooks the cauldron. This is transformation: the gentle feeding the bright, the bright transforming the raw. The cauldron is the vessel where this alchemy happens."
+    description: "Wind below, fire above. Wood feeds fire; fire transforms wood. This is the cauldron: the vessel that holds and transforms. The wind is the wood, the fuel; the fire is the heat, the agent of change. Together, they cook what is raw into what nourishes. The cauldron is the sacred space where transformation happens."
   },
-  taoist_reflection: "The Tao Te Ching says: 'The Tao is empty, yet use will not drain it. Deep, it is like the ancestor of the ten thousand things.' Hexagram 50 is the cauldron as the empty vessel that transforms. The cauldron is empty, yet it nourishes all. It does not claim the food it cooks; it simply serves. The wise one is like the cauldron: empty, useful, nourishing, claiming nothing."
+  taoist_reflection: "The Tao Te Ching says: 'The Tao is like an empty vessel that is yet inexhaustible. It is bottomless, perhaps the ancestor of all things.' Hexagram 50 is that vessel made visible. The cauldron is empty, yet it holds all that can be cooked. It is passive, yet it enables the most active transformation. In your life, be the cauldron: empty enough to receive, stable enough to hold, patient enough to let the fire do its work. Then what you offer will nourish all who come."
 };

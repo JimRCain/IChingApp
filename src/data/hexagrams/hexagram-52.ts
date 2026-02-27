@@ -1,33 +1,33 @@
 export const hexagram52 = {
   number: 52,
-  name: "Keeping Still (Mountain) (艮 - Gèn)",
+  name: "Keeping Still (艮 - Gèn)",
   nameCn: "艮",
   binary: "100100",
-  heart: "Mountain over mountain. Stillness doubled, stability compounded. The mountain does not move; it simply is. Keeping Still is not the absence of movement, but the presence of stillness within movement. The mountain stands through storms, through seasons, through centuries. It does not resist; it endures. In human life, Keeping Still is the ability to stop when stopping is required, to be still when stillness is the only right response. The mountain teaches: not everything that can be done should be done. Sometimes, the highest action is non-action.",
+  heart: "Mountain over mountain. Stillness upon stillness. The mountain does not move; it simply rests. Keeping Still is the art of stopping—not as avoidance, but as completion. When the spine is still, the body rests. When the mind is still, the world settles. The sage knows when to stop: at the right moment, in the right place, with no regret.",
   ancient: {
-    chinese: "艮。艮其背，不獲其身。行其庭，不見其人。无咎。",
-    rendering: "Keeping Still. Keeping the back still so that one no longer feels the body. Going into the courtyard and not seeing the person. No blame."
+    chinese: "艮其背，不獲其身，行其庭，不見其人。无咎。",
+    rendering: "Keeping Still. Keeping his back still, he is no longer aware of his body. Walking in his courtyard, he does not see his neighbors. No blame."
   },
-  judgment: "Keeping Still. Keeping the back still so that one no longer feels the body. Going into the courtyard and not seeing the person. No blame. This is the stillness that goes deep: you are so centered that you no longer feel the body's demands, so present that you do not see the person's distractions. You are simply still. No blame follows because you are not avoiding the world; you are finding the center from which the world can be met. Keeping Still is not withdrawal; it is preparation. From stillness, right action emerges.",
-  image: "Mountains standing close. The image of Keeping Still. The noble one does not permit their thoughts to go beyond their situation. Mountains standing close: one mountain beside another, both still. The noble one learns: do not let thoughts go beyond the situation. Do not chase what is not here. Do not worry about what is not now. Be present in this moment, in this place, in this situation. The mountain does not long to be elsewhere. Neither should you.",
+  judgment: "To keep the back still is to let the world go. When the spine is still, the body is forgotten. When the self is forgotten, others are not objects of grasping. Walking in the courtyard, you do not see your neighbors—not because you reject them, but because you are not seeking. No blame attends this stillness. It is the ground of all right action. From stillness, when you do move, you move truly.",
+  image: "Mountains standing together. The noble one does not let his thoughts go beyond his situation. Mountains together: they rest, they endure. The noble one learns: do not let thoughts go beyond your situation. Be fully here, in this moment, with what is. Thoughts that wander are like streams that leave the mountain; they do not return. Keep your mind on what is present, and you will not be scattered.",
   lines: [
-    "Keeping the toes still. No blame. Continued perseverance furthers.",
-    "Keeping the calves still. He cannot rescue him whom he follows. His heart is not glad.",
-    "Keeping the hips still. Making the sacrum stiff. Dangerous. The heart suffocates.",
-    "Keeping the trunk still. No blame.",
-    "Keeping the jaws still. The words have order. Remorse disappears.",
-    "Noblehearted keeping still. Good fortune."
+    "Keeping his toes still. No blame. Perseverance furthers. The toes—the beginning of movement. To still them before they move is wise. No blame because you have not yet taken a wrong step. Persevere in this early stillness, and it will further all that follows.",
+    "Keeping his calves still. He cannot rescue him whom he follows. His heart is not glad. The calves move with the legs; they are not independent. If you still them after movement has begun, you cannot rescue the one you follow—your own impulse. The heart is not glad because the timing is off. Better to still earlier, or not at all.",
+    "Keeping his hips still. Makes his ribs rigid. Danger. The heart suffocates. To still the hips—the center of movement—after you are already in motion makes the whole body rigid. The ribs lock; the heart cannot breathe. Danger because you are fighting yourself. If you must still, still at the source, not in mid-motion.",
+    "Keeping his trunk still. No blame. The trunk—the core, the center. To still the center is to find balance. No blame because you are not preventing movement; you are grounding it. From this still center, all movement can arise cleanly.",
+    "Keeping his jaws still. Words have order. Regret disappears. The jaws—speech. To still them is to speak only when words are true and ordered. Regret disappears because you do not speak in haste. The stillness of the jaws is not silence; it is the pause before right speech.",
+    "Keeping his back still. Good fortune. The culmination: the back, the spine, the deepest support. To keep the back still is to be so grounded that the body is forgotten. Good fortune because you are no longer reacting to the world; you are simply present, and from that presence, all action is true."
   ],
   trigrams: {
     lower: {
       name: "Gèn (Mountain)",
-      nature: "Keeping still, resting"
+      nature: "Stillness, resting, completing"
     },
     upper: {
       name: "Gèn (Mountain)",
-      nature: "Keeping still, resting"
+      nature: "Stillness, resting, completing"
     },
-    description: "Mountain below, mountain above. Stillness doubled, stability compounded. Keeping Still is the ability to stop when stopping is required, to be still when stillness is the only right response."
+    description: "Mountain over mountain. Stillness upon stillness. This is the meditation of form: each mountain rests, each moment completes. The wise one learns that true stillness is not a void; it is the full presence of what is, unmoving and complete."
   },
-  taoist_reflection: "The Tao Te Ching says: 'The heavy is the root of the light. The still is the master of the restless.' Hexagram 52 is the still that masters the restless. The mountain does not chase the clouds; the clouds come and go. The mountain does not resist the wind; the wind blows and passes. The wise one is like the mountain: still, present, unmoved by what comes and goes. In stillness, everything finds its place."
+  taoist_reflection: "The Tao Te Ching says: 'Do you have the patience to wait till your mud settles and the water is clear? Can you remain unmoving till the right action arises by itself?' Hexagram 52 is the answer: yes. Keeping still is not passivity; it is the deepest activity. The mountain does not move, yet all things grow around it. The sage does not strive, yet all things are accomplished. In stillness, the mud settles, the water clears, and right action arises of itself."
 };
