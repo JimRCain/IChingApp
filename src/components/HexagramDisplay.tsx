@@ -26,7 +26,7 @@ export const HexagramDisplay: React.FC<HexagramDisplayProps> = ({ title, hexagra
           <h4 className="text-xl font-serif font-bold mb-2">
             {hexagram.number}. {hexagram.name}
           </h4>
-          <p className="text-[#3a5f6e] text-sm mb-2">{hexagram.nameCn}</p>
+          <p className="text-[#3a5f6e] text-lg font-serif mb-2">{hexagram.ancient.chinese}</p>
           <p className="text-[#888] text-xs italic">{hexagram.ancient.rendering}</p>
         </div>
       </div>
