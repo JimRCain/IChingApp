@@ -28,6 +28,7 @@ const translations = {
     title: "I Ching",
     questionPlaceholder: "Ask your question (optional)",
     throwCoins: "Throw Coins",
+    revealReading: "Reveal Reading",
     newReading: "New Reading",
     yourQuestion: "Your Question",
     primaryHexagram: "Primary Hexagram",
@@ -48,6 +49,7 @@ const translations = {
     title: "易经",
     questionPlaceholder: "输入您的问题（可选）",
     throwCoins: "掷币",
+    revealReading: "揭示卦象",
     newReading: "新卦",
     yourQuestion: "您的问题",
     primaryHexagram: "本卦",
@@ -71,6 +73,7 @@ const IChingApp: React.FC = () => {
   const [question, setQuestion] = useState("");
   const [lines, setLines] = useState<LineResult[]>([]);
   const [isComplete, setIsComplete] = useState(false);
+  const [readyToReveal, setReadyToReveal] = useState(false);
   const [result, setResult] = useState<ReadingResult | null>(null);
 
   const t = translations[language];
@@ -115,43 +118,47 @@ const IChingApp: React.FC = () => {
       setLines(newLines);
 
       if (newLines.length === 6) {
-        const primaryBinary = newLines.map(line => line.value === 7 || line.value === 9 ? "1" : "0").join("");
-        const transformedBinary = newLines.map(line => {
-          if (line.value === 6) return "1";
-          if (line.value === 9) return "0";
-          return line.value === 7 || line.value === 9 ? "1" : "0";
-        }).join("");
-
-        const changingLines = newLines
-          .map((line, index) => {
-            if (line.value === 6 || line.value === 9) {
-              return index + 1;
-            }
-            return -1;
-          })
-          .filter(lineNum => lineNum !== -1);
-
-        const primaryHexagram = getHexagramByBinary(primaryBinary);
-        const transformedHexagram = primaryBinary !== transformedBinary 
-          ? getHexagramByBinary(transformedBinary) 
-          : null;
-
-        setResult({
-          primaryHexagram: primaryHexagram || null,
-          transformedHexagram,
-          lines: newLines,
-          changingLines,
-          primaryBinary,
-          transformedBinary,
-        });
-        setIsComplete(true);
+        setReadyToReveal(true);
       }
+    } else if (readyToReveal) {
+      const primaryBinary = lines.map(line => line.value === 7 || line.value === 9 ? "1" : "0").join("");
+      const transformedBinary = lines.map(line => {
+        if (line.value === 6) return "1";
+        if (line.value === 9) return "0";
+        return line.value === 7 || line.value === 9 ? "1" : "0";
+      }).join("");
+
+      const changingLines = lines
+        .map((line, index) => {
+          if (line.value === 6 || line.value === 9) {
+            return index + 1;
+          }
+          return -1;
+        })
+        .filter(lineNum => lineNum !== -1);
+
+      const primaryHexagram = getHexagramByBinary(primaryBinary);
+      const transformedHexagram = primaryBinary !== transformedBinary 
+        ? getHexagramByBinary(transformedBinary) 
+        : null;
+
+      setResult({
+        primaryHexagram: primaryHexagram || null,
+        transformedHexagram,
+        lines,
+        changingLines,
+        primaryBinary,
+        transformedBinary,
+      });
+      setIsComplete(true);
+      setReadyToReveal(false);
     }
-  }, [lines, generateLine]);
+  }, [lines, readyToReveal, generateLine]);
 
   const handleReset = useCallback(() => {
     setLines([]);
     setIsComplete(false);
+    setReadyToReveal(false);
     setResult(null);
     setQuestion("");
   }, []);
@@ -183,10 +190,13 @@ const IChingApp: React.FC = () => {
 
               <button
                 onClick={handleThrow}
-                disabled={lines.length >= 6}
                 className="w-full min-h-[48px] bg-[#3a5f6e] hover:bg-[#2d4a56] disabled:bg-[#2a2a2a] disabled:cursor-not-allowed text-white font-medium rounded-lg transition-colors"
               >
-                {lines.length === 0 ? t.throwCoins : `${t.throwCoins} (${lines.length}/6)`}
+                {lines.length === 0 
+                  ? t.throwCoins 
+                  : readyToReveal 
+                    ? t.revealReading 
+                    : `${t.throwCoins} (${lines.length}/6)`}
               </button>
 
               {lines.length > 0 && (
