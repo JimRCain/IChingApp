@@ -287,15 +287,21 @@ const IChingApp: React.FC = () => {
         setReadyToReveal(true);
       }
     } else if (readyToReveal) {
+      // Binary is stored top-to-bottom (line 6 to line 1) in data files
+      // lines array is bottom-to-top (line 1 to line 6)
+      // So we need to reverse the order when building binary
       const primaryBinary = lines
         .map((line) => (line.value === 7 || line.value === 9 ? "1" : "0"))
+        .reverse()
         .join("");
+      
       const transformedBinary = lines
         .map((line) => {
           if (line.value === 6) return "1";
           if (line.value === 9) return "0";
           return line.value === 7 || line.value === 9 ? "1" : "0";
         })
+        .reverse()
         .join("");
 
       const primaryHexagram = getHexagramByBinary(primaryBinary);
