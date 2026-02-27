@@ -484,10 +484,10 @@ const IChingApp: React.FC = () => {
                   </div>
                 ) : result.primaryHexagram ? (
                   <div className="space-y-3">
-                    {/* Display all 6 lines as interactive buttons */}
-                    {result.primaryHexagram.lines.map((lineText, index) => {
-                      const lineNum = index + 1;
-                      const lineResult = result.lines[index];
+                    {/* Display all 6 lines as interactive buttons - reversed order (line 6 at top, line 1 at bottom) */}
+                    {[...result.primaryHexagram.lines].reverse().map((lineText, reverseIndex) => {
+                      const lineNum = 6 - reverseIndex; // Convert reversed index back to line number (6, 5, 4, 3, 2, 1)
+                      const lineResult = result.lines[lineNum - 1]; // Get the line result (0-indexed)
                       const isExpanded = expandedLines.includes(lineNum);
                       const isChanging = lineResult?.isChanging;
                       const isRecommended = result.changingLines.some(
