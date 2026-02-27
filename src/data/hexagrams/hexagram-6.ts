@@ -2,7 +2,7 @@ export const hexagram6 = {
   number: 6,
   name: "Conflict (訟 - Sòng)",
   nameCn: "訟",
-  binary: "010111",
+  binary: "111010",
   heart: "Heaven above, water below. The upward drive of the creative, the downward pull of the abyss. They move against each other, not together. This is conflict—not necessarily war, but opposition, friction, the grating of two forces that cannot yet align. It arises when waiting fails, when patience is exhausted, when the clouds refuse to release and the earth grows dry. Conflict is not evil; it is the natural result of misalignment. But like fire, it can warm or it can burn.",
   ancient: {
     chinese: "訟。有孚窒惕，中吉，終凶。利見大人。不利涉大川。",

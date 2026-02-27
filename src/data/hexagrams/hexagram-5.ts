@@ -2,7 +2,7 @@ export const hexagram5 = {
   number: 5,
   name: "Waiting (需 - Xū)",
   nameCn: "需",
-  binary: "111010",
+  binary: "010111",
   heart: "Clouds rising into heaven. Rain that has not yet fallen. Above, the vast openness of the sky; below, the gathering moisture. Nothing is wrong. Everything is exactly as it should be. But not yet complete. Waiting is not emptiness—it is fullness in suspension. The field does not curse the clouds for not releasing; it simply receives the shadow, the coolness, the promise. Waiting is the space between the promise and its fulfillment, and that space is sacred.",
   ancient: {
     chinese: "需。有孚，光亨，貞吉。利涉大川。",
