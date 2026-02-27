@@ -2,7 +2,7 @@ export const hexagram9 = {
   number: 9,
   name: "Small Taming (小畜 - Xiǎo Chù)",
   nameCn: "小畜",
-  binary: "011111",
+  binary: "110111",
   heart: "Wind moving across the sky. Invisible, yet gathering clouds. Unseen, yet bending trees. This is the small taming—not the dramatic victory, not the grand gesture, but the steady, patient influence that shapes things from within. The wind does not fight the sky; it moves through it. And in its moving, it gathers, accumulates, prepares. Something is being tamed here, but gently. Like training a young plant to grow straight, like teaching a stream to flow without flooding. Small taming, large results—but only if you do not rush.",
   ancient: {
     chinese: "小畜。亨。密雲不雨，自我西郊。",

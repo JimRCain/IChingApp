@@ -2,7 +2,7 @@ export const hexagram7 = {
   number: 7,
   name: "The Army (師 - Shī)",
   nameCn: "師",
-  binary: "010000",
+  binary: "000010",
   heart: "Water flowing underground. Hidden, unseen, but moving with purpose. Above, the earth; below, the stream that nourishes it. This is the army—not the visible force, but the disciplined structure that supports from beneath. The army is not war; it is organization. It is the capacity to act together, to move as one, to bring order out of chaos. The true leader does not stand above, waving banners. They flow underground, unseen, making the earth fertile.",
   ancient: {
     chinese: "師。貞，丈人吉，无咎。",
