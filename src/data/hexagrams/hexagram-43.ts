@@ -2,7 +2,7 @@ export const hexagram43 = {
   number: 43,
   name: "Breakthrough (夬 - Guài)",
   nameCn: "夬",
-  binary: "111110",
+  binary: "011111",
   heart: "Lake over heaven. The lake rises, high above the land, threatening to overflow. Below, the creative power of heaven waits. Breakthrough is the moment of decision, the rupture, the final push through an obstruction that has long resisted. Not gentle, not patient—but necessary. The lake must break its banks; the truth must be spoken; the boil must be lanced. Breakthrough is the energy of resolution, of cutting through what has festered too long.",
   ancient: {
     chinese: "夬。揚于王庭，孚號有厲。告自邑，不利即戎。利有攸往。",

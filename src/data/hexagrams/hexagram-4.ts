@@ -2,7 +2,7 @@ export const hexagram4 = {
   number: 4,
   name: "Youthful Folly (蒙 - Méng)",
   nameCn: "蒙",
-  binary: "100001",
+  binary: "100010",
   heart: "Every beginning is covered in mist. The mountain does not call the stream to itself—the stream finds its own way down, filling each hollow, learning the shape of the land as it flows. There is nothing wrong with not knowing. The trouble begins only when we pretend to know, or when we ask the same question again and again, hoping for a different answer.",
   ancient: {
     chinese: "蒙。亨。匪我求童蒙。童蒙求我。初筮告。再三瀆。瀆則不告。利貞。",

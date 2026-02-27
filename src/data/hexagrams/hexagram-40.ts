@@ -2,7 +2,7 @@ export const hexagram40 = {
   number: 40,
   name: "Deliverance (解 - Xiè)",
   nameCn: "解",
-  binary: "010010",
+  binary: "010100",
   heart: "Thunder over water. The storm breaks, the rain falls, the tension releases. Deliverance is this: the moment when what was bound is freed, when what was stuck moves again. Not by force, but by the natural release of accumulated pressure. Thunder rolls, rain pours, and the world breathes again. In human life, deliverance comes after long obstruction—sudden, welcome, complete. The knot unties; the path opens.",
   ancient: {
     chinese: "解。利西南。无所往，其來復吉。有攸往，夙吉。",

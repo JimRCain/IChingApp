@@ -2,7 +2,7 @@ export const hexagram36 = {
   number: 36,
   name: "Darkening of the Light (明夷 - Míng Yí)",
   nameCn: "明夷",
-  binary: "010001",
+  binary: "000101",
   heart: "Earth over fire. The sun setting, sinking below the plain. Light withdraws; darkness advances. This is darkening of the light—not the absence of light, but its concealment. The sun is still there, still burning, but hidden. In times of darkness, the wise one does not rage against the night; they wait, they preserve, they tend the inner flame. The light will return, but first, the darkness must be honored.",
   ancient: {
     chinese: "明夷。利艱貞。",
