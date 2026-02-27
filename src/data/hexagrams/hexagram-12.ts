@@ -2,7 +2,7 @@ export const hexagram12 = {
   number: 12,
   name: "Standstill (否 - Pǐ)",
   nameCn: "否",
-  binary: "000111",
+  binary: "111000",
   heart: "Heaven withdraws, earth sinks. They no longer meet. The creative power recedes into distance; the receptive ground grows cold and hard. Between them, nothing moves. This is standstill—not the peace of harmony, but the stillness of separation. The great departs, the small approaches. Communication ceases, growth stops, the fields lie fallow. And yet, even in this barren time, there is wisdom. The noble one does not fight the standstill; they wait, they preserve, they tend what cannot be taken away.",
   ancient: {
     chinese: "否之匪人，不利君子貞，大往小來。",

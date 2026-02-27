@@ -2,7 +2,7 @@ export const hexagram15 = {
   number: 15,
   name: "Modesty (謙 - Qiān)",
   nameCn: "謙",
-  binary: "001000",
+  binary: "000100",
   heart: "Earth above, mountain below. The mountain, the highest thing, hides beneath the earth. This is modesty: not thinking less of yourself, but thinking of yourself less. The mountain does not need to show its height; it simply is high. The earth covers it, and in being covered, the mountain becomes more, not less. True greatness does not announce itself.",
   ancient: {
     chinese: "謙。亨，君子有終。",

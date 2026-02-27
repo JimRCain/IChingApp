@@ -2,7 +2,7 @@ export const hexagram11 = {
   number: 11,
   name: "Peace (泰 - Tài)",
   nameCn: "泰",
-  binary: "111000",
+  binary: "000111",
   heart: "Heaven and earth in union. The sky above, the earth below, and between them, all things flourish. Not because the sky conquers the earth, not because the earth resists the sky—but because they meet, they exchange, they give to each other. Heaven's light descends, earth's warmth rises. In their meeting, life happens. This is peace: not the absence of movement, but the perfect harmony of all movements. The small departs, the great approaches. Everything is in its right place, flowing as it should.",
   ancient: {
     chinese: "泰。小往大來，吉亨。",
