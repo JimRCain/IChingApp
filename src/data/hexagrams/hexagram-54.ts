@@ -2,7 +2,7 @@ export const hexagram54 = {
   number: 54,
   name: "The Marrying Maiden (歸妹 - Guī Mèi)",
   nameCn: "歸妹",
-  binary: "110100",
+  binary: "001011",
   heart: "Thunder over lake. Thunder stirs, the lake responds—but the union is not equal. The marrying maiden is a secondary wife, entering a household not as the principal but as a supplement. Her position is precarious; her influence, limited. This hexagram speaks of relationships entered without full commitment, of unions that serve a purpose but lack depth. The wise one in such a situation does not demand what cannot be given; they accept the limits and make the best of what is.",
   ancient: {
     chinese: "歸妹。征凶，无攸利。",

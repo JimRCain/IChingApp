@@ -2,7 +2,7 @@ export const hexagram45 = {
   number: 45,
   name: "Gathering Together (萃 - Cuì)",
   nameCn: "萃",
-  binary: "000110",
+  binary: "011000",
   heart: "Lake over earth. The lake gathers water, the earth receives it. Gathering Together is the drawing together of what belongs together—not by force, but by affinity. People gather around a common purpose, a shared vision, a beloved leader. Not because they are commanded, but because they recognize in the gathering a deeper home. The lake does not command the streams; they flow to it because it is low. So too, the wise leader is low, and all things flow to them.",
   ancient: {
     chinese: "萃。亨。王假有廟。利見大人，亨，利貞。用大牲吉。利有攸往。",

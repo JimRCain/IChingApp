@@ -2,14 +2,14 @@ export const hexagram55 = {
   number: 55,
   name: "Abundance (豐 - Fēng)",
   nameCn: "豐",
-  binary: "101100",
-  heart: "Fire over thunder. Lightning flashes, thunder rolls—the height of power, the peak of influence. Abundance is fullness, prosperity, the moment when everything is present. But the hexagram warns: abundance does not last. The sun must set, the moon must wane. In times of abundance, the wise one does not grasp; they give. They do not cling; they share. For fullness, rightly used, becomes blessing. Hoarded, it becomes poison.",
+  binary: "001101",
+  heart: "Thunder over fire. Thunder rolls, fire burns—the height of power, the peak of influence. Abundance is fullness, prosperity, the moment when everything is present. But the hexagram warns: abundance does not last. The sun must set, the moon must wane. In times of abundance, the wise one does not grasp; they give. They do not cling; they share. For fullness, rightly used, becomes blessing. Hoarded, it becomes poison.",
   ancient: {
     chinese: "豐。亨。王假之，勿憂，宜日中。",
     rendering: "Abundance has success. The king attains abundance. Do not grieve. Be like the sun at midday."
   },
   judgment: "Success comes with abundance, but it is not for you alone. The king attains it, but he must use it for all. Do not grieve that abundance cannot last; that is its nature. Be like the sun at midday—at its peak, it gives most light. It does not hoard its rays. In your abundance, give. In your fullness, share. The sun does not grieve that it must set; it shines fully while it can. So too, you.",
-  image: "Fire over thunder. The noble one decides lawsuits and carries out punishments. Fire over thunder: the flash reveals, the shock enforces. The noble one learns: in times of abundance, clarity and justice are possible. Decide lawsuits—bring resolution. Carry out punishments—maintain order. Abundance is not just for enjoyment; it is for right action. Use your fullness to set things right.",
+  image: "Thunder over fire. The noble one decides lawsuits and carries out punishments. Thunder over fire: the flash reveals, the shock enforces. The noble one learns: in times of abundance, clarity and justice are possible. Decide lawsuits—bring resolution. Carry out punishments—maintain order. Abundance is not just for enjoyment; it is for right action. Use your fullness to set things right.",
   lines: [
     "When you meet your match, you are alike. Even if you are of no account, there is no blame. Going forward brings honor. In abundance, you meet your match—one who shares your quality. Even if you are humble, this meeting is without blame. Go forward; honor awaits.",
     "The screen is so full of light that you see a speck. Going forward brings doubt. With goodwill and sacrifice, good fortune. So much light that it obscures; you see a speck, a flaw. Doubt arises. But with goodwill and sacrifice—with sincere offering—good fortune follows. Do not let the flaw blind you to the whole.",

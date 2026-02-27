@@ -2,7 +2,7 @@ export const hexagram51 = {
   number: 51,
   name: "The Arousing (震 - Zhèn)",
   nameCn: "震",
-  binary: "100100",
+  binary: "001001",
   heart: "Thunder rolling, rolling—shock after shock. It terrifies, then it passes. The Arousing is the moment of crisis, the sudden event that shatters complacency. The wise one does not run from the shock; they meet it with inner stillness. The thunder comes, the thunder goes, and they remain.",
   ancient: {
     chinese: "震。亨。震來虩虩，笑言啞啞。震驚百里，不喪匕鬯。",
